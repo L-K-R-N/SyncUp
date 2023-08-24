@@ -1,0 +1,218 @@
+//Global UI
+body {
+	font-family: $font-family-primary;
+	margin: 0;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow-x: hidden;
+	&.no-scroll {
+		overflow: hidden;
+	}
+}
+
+.footer {
+	margin-top: auto;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.wrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 30px;
+	padding-right: 30px;
+	@include media-max-m {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+	@include media-max-s {
+		max-width: 100vw;
+	}
+}
+
+.swiper-container {
+	overflow: visible;
+}
+
+img {
+	user-select: none;
+}
+
+// Dynamic grid
+.dynamic-grid {
+	max-width: 100%;
+	& > * {
+		display: flex;
+		flex-wrap: nowrap;
+		@include media-max-m {
+			overflow-scrolling: touch;
+			-webkit-overflow-scrolling: touch;
+			overflow-y: auto;
+			margin-left: -16px;
+			margin-right: -16px;
+			padding-left: 16px;
+			padding-right: 16px;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+}
+
+button {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+// Custom select
+[data-select] {
+	position: relative;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	// &:hover,
+	// &.open {
+	// 	.custom-select-field {
+	// 	}
+	// }
+}
+
+.custom-select-field {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 100%;
+	cursor: pointer;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.custom-select-value {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.custom-select-arrow {
+	display: flex;
+	align-items: center;
+}
+.custom-select-arrow svg {
+	transition: transform 0.3s ease;
+}
+
+.custom-select-options {
+	position: absolute;
+	z-index: 30;
+	opacity: 0;
+	visibility: hidden;
+	right: 0;
+	left: 0;
+	top: 100%;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	ul {
+		display: block;
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		&::-webkit-scrollbar {
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-clip: content-box;
+			transition: background-color 0.3s ease;
+		}
+
+		&::-webkit-scrollbar-button {
+			display: none;
+		}
+
+		&:hover {
+			&::-webkit-scrollbar-thumb {
+				background-clip: content-box;
+			}
+		}
+	}
+	ul li {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-sizing: border-box;
+		cursor: pointer;
+		transition: color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+		&:hover {
+			opacity: 0.6;
+		}
+	}
+
+	ul li.selected {
+		cursor: default;
+		opacity: 1;
+	}
+}
+
+[data-select].open {
+	.custom-select-arrow svg {
+		transform: rotate(-180deg);
+	}
+}
+
+[data-select].open .custom-select-field {
+	z-index: 5;
+}
+
+[data-select].open .custom-select-options {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: all;
+}
+
+.custom-select-options {
+	border-radius: 8px;
+	width: 160px;
+	min-width: 100%;
+	max-width: 160px;
+	padding: 8px;
+	border-radius: 8px;
+	@include absolute-horizontal-center;
+	ul li {
+		max-width: 160px;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: 9px 16px;
+		transition: background-color 0.2s;
+		cursor: pointer;
+		border-radius: 8px;
+		&:hover {
+			opacity: 1;
+		}
+		// .selected {
+		// }
+	}
+}
+// Custom select end

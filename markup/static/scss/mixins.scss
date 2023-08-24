@@ -1,0 +1,78 @@
+// Utils
+@mixin absolute-vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@mixin absolute-horizontal-center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// max-width queries
+@mixin media-max-s {
+	@media screen and (max-width: $breakpoint-small-max) {
+		@content;
+	}
+}
+@mixin media-max-m {
+	@media screen and (max-width: $breakpoint-medium-max) {
+		@content;
+	}
+}
+@mixin media-max-l {
+	@media screen and (max-width: $breakpoint-large-max) {
+		@content;
+	}
+}
+//@mixin media-max-xl {
+//	@media screen and (max-width: $breakpoint-xlarge-max) {
+//		@content;
+//	}
+//}
+
+// min-width queries
+@mixin media-min-s {
+	@media screen and (max-width: $breakpoint-small-min) {
+		@content;
+	}
+}
+@mixin media-min-m {
+	@media screen and (max-width: $breakpoint-medium-min) {
+		@content;
+	}
+}
+@mixin media-min-l {
+	@media screen and (max-width: $breakpoint-large-min) {
+		@content;
+	}
+}
+
+//@mixin media-min-xl {
+//	@media screen and (max-width: $breakpoint-xlarge-min) {
+//		@content;
+//	}
+//}
+
+////////////////////////
+/// using example
+/// @include media mins {
+/// 	.header { 
+/// 		display: none;
+/// 	}
+/// }
+
+// Hover, Links
+@mixin hover-opacity {
+	transition: opacity 0.2s;
+	&:hover {
+		opacity: 0.7;
+	}
+}
