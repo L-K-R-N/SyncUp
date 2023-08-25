@@ -10,6 +10,7 @@ body {
 	flex-direction: column;
 	position: relative;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 	&.no-scroll {
 		overflow: hidden;
 	}

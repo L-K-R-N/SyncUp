@@ -93,7 +93,7 @@
 
 // Fonts
 
-@mixin font ($style: normal, $weight: normal, $size: $size-xs, $height: 100%, $family: $font-family-primary) {
+@mixin font ($style: normal, $weight: normal, $size: $size-s, $height: 100%, $family: $font-family-primary) {
 	font-style: $style;
 	font-weight: $weight;
 	font-size: $size;
@@ -107,6 +107,13 @@
 	line-height: 48px;
 	font-family: $font-family-primary;
 }	
+
+@mixin h3 {
+	font-weight: 600;
+	font-size: $size-l;
+	line-height: 34px;
+	font-family: $font-family-primary;
+}
 
 @mixin h5 {
 	font-weight: normal;
