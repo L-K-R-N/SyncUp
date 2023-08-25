@@ -1,11 +1,37 @@
 // Fonts
-$font-family-primary: "Proxima nova", sans-serif;
+$font-family-primary: "Proxima Nova", sans-serif;
+
+// Font-sizes
+$size-xxs: 14px;
+$size-xs: 18px;
+$size-s: 20px;
+$size-m: 24px;
+$size-l: 28px;
+$size-xl: 40px;
+$size-xxl: 54px;
+
+
+// Titles 
+
 
 //Colors
 
+$color-red: rgba(232, 73, 73, 1);
+$color-green: rgba(76, 191, 87, 1);
+$color-primary: rgba(255, 156, 55, 1);
+$color-text-main: rgba(0, 0, 0, 1);
+$color-text-second:rgba(109, 106, 116, 1);
+$color-bg: rgba(255, 255, 255, 1);
 //Shadow
 
+$shadow: 14px 10px 86px 5px rgba(0, 0, 0, 0.1);
+
+
 // Brand colors
+
+// Transitions 
+
+$transition-main: all 0.2s ease-out;
 
 // Breakpoints
 $breakpoint-small-max: 640px !default;
@@ -17,3 +43,4 @@ $breakpoint-small-min: 640px !default;
 $breakpoint-medium-min: 1024px !default;
 $breakpoint-large-min: 1200px !default;
 //$breakpoint-xlarge-min: 1600px !default;
+

@@ -1,6 +1,8 @@
 //Global UI
+
 body {
-	font-family: $font-family-primary;
+	@include font();
+	color: $color-text-second;
 	margin: 0;
 	height: auto;
 	min-height: 100vh;

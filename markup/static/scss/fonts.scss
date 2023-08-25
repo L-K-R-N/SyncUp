@@ -1,3 +1,4 @@
+
 @mixin font-face($name, $file, $weight: normal, $style: normal) {
 	@font-face {
 		font-family: "#{$name}";
@@ -6,9 +7,13 @@
 		font-weight: $weight;
 		font-style: $style;
 		font-display: swap;
+
 	}
 }
 
 @include font-face("Proxima Nova", "../fonts/proxima/proximanova-regular", 400, normal);
 @include font-face("Proxima Nova", "../fonts/proxima/proximanova-semibold", 600, normal);
 @include font-face("Proxima Nova", "../fonts/proxima/proximanova-bold", 700, normal);
+
+
+// @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap');

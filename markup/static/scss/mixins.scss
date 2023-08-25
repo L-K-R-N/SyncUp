@@ -16,6 +16,7 @@
 	transform: translate(-50%, -50%);
 }
 
+
 // max-width queries
 @mixin media-max-s {
 	@media screen and (max-width: $breakpoint-small-max) {
@@ -75,4 +76,140 @@
 	&:hover {
 		opacity: 0.7;
 	}
+}
+
+@mixin link ($color: $color-text-second, $hover: $color-primary) {
+	color: $color;
+	border-bottom: 1px solid transparent;
+	border-radius: 999px;
+	padding: 10px;
+	transition: $transition-main;
+
+	&:hover {
+		border-color: $color-primary;
+		color: $hover;
+	}
+}
+
+// Fonts
+
+@mixin font ($style: normal, $weight: normal, $size: $size-xs, $height: 100%, $family: $font-family-primary) {
+	font-style: $style;
+	font-weight: $weight;
+	font-size: $size;
+	line-height: $height;
+	font-family: $family;
+}	
+
+@mixin h2 {
+	font-weight: 600;
+	font-size: $size-xl;
+	line-height: 48px;
+	font-family: $font-family-primary;
+}	
+
+@mixin h5 {
+	font-weight: normal;
+	font-size: $size-m;
+	line-height: 24px;
+	font-family: $font-family-primary;
+}	
+
+@mixin text {
+	font-weight: normal;
+	font-size: $size-s;
+	line-height: 34px;
+	font-family: $font-family-primary;
+}	
+
+@mixin small-text {
+	font-weight: normal;
+	font-size: $size-xs;
+	line-height: 30px;
+	font-family: $font-family-primary;
+}	
+
+
+
+
+
+// UI
+
+@mixin button-primary ($width: 100%, $height: 100%, $bg-color: $color-primary, $text-color: $color-bg) {
+	width: $width;
+	height: $height;
+	color: $text-color;
+	background: $bg-color;
+	border: 1px solid $bg-color;
+	border-radius: 999px;
+
+	transition: $transition-main;
+
+	&:hover {
+		background: $text-color;
+		color: $bg-color;
+	}
+}	
+
+@mixin button-outline ($width: 100%, $height: 100%, $bg-color: $color-bg, $text-color: $color-primary) {
+	width: $width;
+	height: $height;
+	color: $text-color;
+	background: $bg-color;
+	border: 1px solid $text-color;
+	border-radius: 999px;
+
+	transition: $transition-main;
+
+	&:hover {
+		background: $text-color;
+		color: $bg-color;
+	}
+}
+
+@mixin input ($width: 100%, $height: 100%, $text-color: $color-text-second) {
+	width: $width;
+	height: $height;
+	padding: 22px 24px;
+	border-radius: 999px;
+	color: $text-color;
+	background: transparent;
+	border: 1px solid $text-color;
+
+	transition: $transition-main;
+
+	&:hover {
+		border: $color-primary;
+		color: $color-primary;
+	}
+	&:focus {
+		border: $color-text-main;
+		color: $color-text-main;
+	}
+	&:valid {
+		border: $color-green;
+		color: $color-green;
+	}
+	&:invalid {
+		border: $color-red;
+		color: $color-red;
+	}
+}
+
+
+
+// displays
+@mixin grid ($columns, $rows, $gap: 0) {
+	display: grid;
+	grid-template-columns: $columns;
+	grid-template-rows: $rows;
+	gap: $gap;
+}
+
+@mixin flex ($align: center, $justify: space-between, $direction: row, $gap: 0) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direction;
+	gap: $gap;
 }
