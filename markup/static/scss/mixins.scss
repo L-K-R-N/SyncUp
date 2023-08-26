@@ -17,6 +17,28 @@
 }
 
 
+// min-width queries
+@mixin media-min-s {
+	@media screen and (min-width: $breakpoint-small-min) {
+		@content;
+	}
+}
+@mixin media-min-m {
+	@media screen and (min-width: $breakpoint-medium-min) {
+		@content;
+	}
+}
+@mixin media-min-l {
+	@media screen and (min-width: $breakpoint-large-min) {
+		@content;
+	}
+}
+//@mixin media-max-xl {
+//	@media screen and (max-width: $breakpoint-xlarge-max) {
+//		@content;
+//	}
+//}
+
 // max-width queries
 @mixin media-max-s {
 	@media screen and (max-width: $breakpoint-small-max) {
@@ -30,28 +52,6 @@
 }
 @mixin media-max-l {
 	@media screen and (max-width: $breakpoint-large-max) {
-		@content;
-	}
-}
-//@mixin media-max-xl {
-//	@media screen and (max-width: $breakpoint-xlarge-max) {
-//		@content;
-//	}
-//}
-
-// min-width queries
-@mixin media-min-s {
-	@media screen and (max-width: $breakpoint-small-min) {
-		@content;
-	}
-}
-@mixin media-min-m {
-	@media screen and (max-width: $breakpoint-medium-min) {
-		@content;
-	}
-}
-@mixin media-min-l {
-	@media screen and (max-width: $breakpoint-large-min) {
 		@content;
 	}
 }
@@ -72,7 +72,7 @@
 
 // Hover, Links
 @mixin hover-opacity {
-	transition: opacity 0.2s;
+	transition: $transition-main;
 	&:hover {
 		opacity: 0.7;
 	}
@@ -80,13 +80,9 @@
 
 @mixin link ($color: $color-text-second, $hover: $color-primary) {
 	color: $color;
-	border-bottom: 1px solid transparent;
-	border-radius: 999px;
-	padding: 10px;
 	transition: $transition-main;
 
 	&:hover {
-		border-color: $color-primary;
 		color: $hover;
 	}
 }

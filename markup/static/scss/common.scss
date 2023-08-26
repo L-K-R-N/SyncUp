@@ -22,7 +22,9 @@
 	color: $color-primary;
 }
 
-.input {}
+.logo {
+	@include hover-opacity;
+}
 
 
 // menu styled start
@@ -57,11 +59,16 @@
 .header {
 
 	width: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	background: $color-bg;
 	&__content {
 		width: 100%;
 		@include flex ();
 		height: 64px;
-		margin: 60px 0 80px 0;
+		margin-top: 50px;
 	}
 
 	&__connect-button {
@@ -81,7 +88,11 @@
 .intro {
 	width: 100%;
 	height: 698px;
-	margin-bottom: 80px;
+	padding-bottom: 136px;
+	min-height: 100vh;
+
+	margin-top: 114px;
+	
 
 	&__content {
 		@include flex();
@@ -195,6 +206,7 @@
 
 		&-title {
 			@include h5;
+			font-weight: 600;
 			color: $color-text-main;
 		}
 
@@ -217,9 +229,14 @@
 
 	&__content {
 		@include flex($gap: 136px);
-
+		padding: 50px 0;
 		width: 100%;
 		
+	}
+
+	&__desc {
+		max-width: 400px;
+		text-align: center;
 	}
 	
 	&__img {
@@ -233,10 +250,6 @@
 		@include flex($direction: column);
 		height: 330px;
 		width: 50%;
-
-		&__text {
-			@include flex($direction: column, $align: center)
-		}
 
 		&__buttons {
 			@include flex($gap: 16px);
@@ -341,9 +354,9 @@
 		}
 
 		&__plan {
-			width: 50%;
+			width: 60%;
 			padding: 64px;
-			@include flex($direction: column, $gap: 16px, $align: start);
+			@include flex($direction: column, $gap: 32px, $align: start);
 
 			&__titles {
 				@include flex($direction: column, $gap: 12px, $align: start, $justify: center);
@@ -357,6 +370,11 @@
 					color: $color-text-main;
 			}
 
+			&__subtitle {
+					font-weight: 600;
+
+			}
+
 			&-ico {
 				position: absolute;
 				top: 0;
@@ -365,6 +383,7 @@
 			&__desc {
 				@include text;
 				padding: 16px 0;
+				width: 330px;
 			}
 
 			&__rate {
@@ -374,7 +393,7 @@
 
 				&_small {
 					@include h5;
-					font-weight: 700;
+					font-weight: 600;
 					color: $color-text-second;
 				}
 			}
@@ -625,7 +644,7 @@
 		color: $color-primary;
 		line-height: 34px;	
 		position: relative;
-		padding-right: 30px;
+		padding-right: 20px;
 		transition: $transition-main;
 
 		&::after {
@@ -637,12 +656,12 @@
 			border-bottom: none;
 			transform: rotate(45deg) translateY(-50%);
 			position: absolute;
-			top: 50%;
+			top: 47%;
 			right: 0;
 		}
 
 		&:hover {
-			padding-right: 40px;
+			padding-right: 35px;
 		}
 	}
 }
@@ -663,7 +682,21 @@
 	}
 
 	&__social-menu {
-		width: 90px;
+		width: 150px;
+
+		
+	}
+
+	.social-menu {
+
+		&__list {
+
+			&__link {
+				@include hover-opacity
+				
+				
+			}
+		}
 	}
 
 	&-menu__list__item {
@@ -672,3 +705,398 @@
 }
 
 // footer styles end
+
+
+
+
+// MEDIA QUERIES START
+
+
+@include media-max-l {
+
+// header styled start
+
+	.header {
+		margin: 40px 0;
+
+		&__content {
+			margin: 0;
+		}
+		&__connect-button {
+			display: none;
+		}
+
+
+	}
+
+
+// header styled end
+
+
+
+
+
+	// intro styles start 
+		
+		.intro {
+			height: 60vh;
+
+			&__content {
+				height: 100%;
+			}
+			&__content-container {
+				width: 100%;
+				align-items: center;
+				gap: 20px;
+			}
+
+			&__info {
+				align-items: center;
+				gap: 40px;
+
+			}	
+
+			&__title {
+				text-align: center;
+				width: 80%;
+			}
+			&__desc {
+				text-align: center;
+			}
+
+			&__img {
+				display: none;
+				
+			}
+
+			
+		}
+		
+		// intro styled end
+		
+		
+		
+		
+		
+		// benefits styled start
+		
+		.benefits {
+
+			
+		}
+		
+		// benefits styled end
+		
+		
+		
+		
+		
+		// demo styled start
+		
+		.demo {
+
+			
+		}
+		
+		// demo styled end
+		
+		
+		
+		
+		
+		//prices styled start
+		
+		.prices {
+
+			
+		}
+		
+		// prices styled end
+		
+		
+		
+		
+		
+		// questions styled start
+		
+		.questions {
+
+			
+		}
+		
+		// questions styled end
+		
+		
+		
+		
+		
+		// consultation styled start
+		
+		.consultation {
+
+			
+		}
+		
+		// consultation styled end
+		
+		
+		
+		
+		
+		// about styled start
+		
+		.about {
+
+			
+		}
+		
+		// about styled end
+		
+		
+		
+		
+		
+		// footer styles start
+		
+		
+		.footer {
+
+			
+		}
+		// footer styles end
+		}
+
+
+
+@include media-max-m {
+
+	// header styled start
+	
+		
+	
+	
+	// header styled end
+	
+	
+	
+	
+	
+	// intro styles start 
+		
+		
+		
+		// intro styled end
+		
+		
+		
+		
+		
+		// benefits styled start
+		
+		.benefits {
+
+			
+		}
+		
+		// benefits styled end
+		
+		
+		
+		
+		
+		// demo styled start
+		
+		.demo {
+
+			
+		}
+		
+		// demo styled end
+		
+		
+		
+		
+		
+		//prices styled start
+		
+		.prices {
+
+			
+		}
+		
+		// prices styled end
+		
+		
+		
+		
+		
+		// questions styled start
+		
+		.questions {
+
+			
+		}
+		
+		// questions styled end
+		
+		
+		
+		
+		
+		// consultation styled start
+		
+		.consultation {
+
+			
+		}
+		
+		// consultation styled end
+		
+		
+		
+		
+		
+		// about styled start
+		
+		.about {
+
+			
+		}
+		
+		// about styled end
+		
+		
+		
+		
+		
+		// footer styles start
+		
+		
+		.footer {
+
+			
+		}
+		// footer styles end
+		
+	}
+
+
+
+	@include media-max-s {
+
+		// header styled start
+		
+			.header {
+	
+		
+			}
+		
+		
+		// header styled end
+		
+		
+		
+		
+		
+		// intro styles start 
+		
+		
+		
+		// intro styled end
+		
+		
+		
+		
+		
+		// benefits styled start
+		
+		.benefits {
+
+			
+		}
+		
+		// benefits styled end
+		
+		
+		
+		
+		
+		// demo styled start
+		
+		.demo {
+
+			
+		}
+		
+		// demo styled end
+		
+		
+		
+		
+		
+		//prices styled start
+		
+		.prices {
+
+			
+		}
+		
+		// prices styled end
+		
+		
+		
+		
+		
+		// questions styled start
+		
+		.questions {
+
+			
+		}
+		
+		// questions styled end
+		
+		
+		
+		
+		
+		// consultation styled start
+		
+		.consultation {
+
+			
+		}
+		
+		// consultation styled end
+		
+		
+		
+		
+		
+		// about styled start
+		
+		.about {
+
+			
+		}
+		
+		// about styled end
+		
+		
+		
+		
+		
+		// footer styles start
+		
+		
+		.footer {
+
+			
+		}
+		// footer styles end
+		}
+
+
+
+// MEDIA QUERIES END
+
