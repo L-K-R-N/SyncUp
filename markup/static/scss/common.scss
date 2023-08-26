@@ -6,13 +6,23 @@
 // основные стили
 
 .title {
-	@include h2
+	@include h2;
+	color: $color-text-main;
 }
 
 .subtitle {
 	@include h3
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.primary {
+	color: $color-primary;
+}
+
+.input {}
 
 
 // menu styled start
@@ -66,6 +76,80 @@
 // header styled end
 
 
+
+// intro styles start 
+.intro {
+	width: 100%;
+	height: 698px;
+	margin-bottom: 80px;
+
+	&__content {
+		@include flex();
+		height: 100%;
+		width: 100%;
+		
+		&-container {
+			@include flex($direction: column, $align: start);
+			height: 445px;
+			width: 60%;
+		}
+	}
+	
+	&__img {
+		@include flex($justify: center);
+		width: 30%;
+		height: 50%;
+		
+	}
+
+	&__info {
+		@include flex($direction: column, $align: start);
+		height: 296px;
+		
+
+		&__text {
+			@include flex($direction: column, $align: center)
+		}
+
+		&__buttons {
+			@include flex($gap: 16px);
+			height: 64px;
+		}
+
+	
+
+	}
+
+	
+	&__button_demo {
+		@include button-outline();
+		
+		height: 100%;
+		width: 147px;
+	}
+	&__button_connect {
+		@include button-primary();
+		height: 100%;
+		width: 317px;
+	}
+
+	&__title {
+		color: $color-text-main;
+
+	}
+	&__subtitle {
+		color: $color-text-main;
+	}
+	
+	&__desc {
+		@include text;	
+		width: 540px;
+
+		
+	}
+}
+
+// intro styled end
 
 // benefits styled start
 
@@ -142,7 +226,7 @@
 		@include flex($align: end, $justify: center);
 		width: 50%;
 		border-radius: 32px;
-		background: $color-primary;
+		background: lighten($color-primary, 35%);
 	}
 
 	&__info {
@@ -192,6 +276,314 @@
 // demo styled end
 
 
+
+//prices styled start
+
+.prices {
+	width: 100%;
+	height: auto;
+	margin-bottom: 80px;
+
+	&__content {
+		@include flex($direction: column, $gap: 48px);
+		max-width: 900px;
+		margin: 0 auto;
+		
+	}
+	
+
+	&__titles {
+		@include flex($direction: column, $gap: 12px);
+		width: 100%;
+	}
+
+
+	&__subtitle {
+		@include text;
+		text-align: center
+	}
+
+	&-tabs {
+
+		&__header {
+			@include flex;
+			width: 100%;
+			
+		}
+
+		&__container-title {
+
+			@include flex($justify: center, $gap: 16px);
+			color: $color-text-main;
+			padding: 16px 0;
+			width: 50%;
+			border-bottom: 2px solid $color-text-third;
+			cursor: pointer;
+			transition: $transition-main;
+
+			&:hover {
+				border-color: $color-primary;
+			}
+		}
+
+		&__title {
+			@include h5;
+			
+			
+		}
+
+		&__main {
+			@include flex($align: stretch);
+			width: 100%;
+			overflow: hidden;
+			border-radius: 20px;
+			box-shadow: $shadow;
+		}
+
+		&__plan {
+			width: 50%;
+			padding: 64px;
+			@include flex($direction: column, $gap: 16px, $align: start);
+
+			&__titles {
+				@include flex($direction: column, $gap: 12px, $align: start, $justify: center);
+				position: relative;
+				padding-left: 92px;
+			}
+
+			&__title {
+					@include h5;
+					font-weight: 700;
+					color: $color-text-main;
+			}
+
+			&-ico {
+				position: absolute;
+				top: 0;
+				left: 0
+			}
+			&__desc {
+				@include text;
+				padding: 16px 0;
+			}
+
+			&__rate {
+				
+				font-size: $size-xxl;
+				color: $color-text-main;
+
+				&_small {
+					@include h5;
+					font-weight: 700;
+					color: $color-text-second;
+				}
+			}
+			&__button {
+				@include button-outline;
+				width: 100%;
+				height: 64px;
+			}
+		}
+
+		&__benefits {
+			padding: 80px 48px;
+			width: 50%;
+			@include flex($direction: column, $gap: 32px, $align: start, $justify: start);
+			background: $color-bg-second;
+
+			&__title {
+				@include h5;
+				font-weight: 700;
+				color: $color-text-main;
+			}
+
+			&__list {
+				@include flex($direction: column, $gap: 16px, $align: start);
+				list-style: none;
+
+				&__item {
+					@include flex($gap: 11px);
+					@include small-text;
+					color: $color-text-main;
+					font-weight: 600;
+					
+
+					
+				}
+			}
+		}
+	}
+
+
+	
+}
+
+// prices styled end
+
+
+
+// questions styled start
+
+.questions {
+	width: 100%;
+	height: auto;
+	margin-bottom: 80px;
+	
+	&__content {
+		height: 100%;
+		width: 100%;
+		border-radius: 20px;
+	}
+	
+	&__title {
+		color: $color-text-main;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	
+	&__cards {
+		max-width: 900px;
+		margin: 0 auto;
+		height: auto;
+		@include flex($direction: column, $gap: 24px, $align: stretch)
+	}
+
+	&__card {
+		
+		border: 1px solid $color-primary;
+		border-radius: 20px;
+		padding: 36px 48px 20px 48px;
+
+		&-header {
+			@include flex($align: start, $gap: 20px);
+			
+		}
+
+		&-ico {
+			cursor: pointer;
+			min-width: 30px
+		}
+		&-title {
+			@include text;
+			color: $color-text-main;
+			font-weight: 600;
+			line-height: 30px;
+		}
+
+		&-answer {
+			@include small-text;
+			margin-top: 16px;
+			height: 0;
+			overflow: hidden;
+		}
+	}
+
+	&__list {
+		@include flex($direction: column, $gap: 30px);
+		list-style: disc;
+		list-style-position: inside;
+
+		&-item {
+			
+		}
+	}
+}
+
+// questions styled end
+
+
+
+// consultation styled start
+
+.consultation {
+	width: 100%;
+	height: 706px;
+	margin-bottom: 80px;
+	
+	&__content {
+		@include flex();
+		height: 100%;
+		width: 100%;
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow: $shadow;
+	}
+	
+	&__title {
+		color: $color-text-main;
+	}
+
+	
+	&__desc {
+		@include text;	
+	}
+	
+
+	&__info {
+		@include flex($direction: column, $justify: center, $gap: 24px);
+		height: 100%;
+		width: 53%;
+		padding: 0 64px;
+		&__text {
+			@include flex($direction: column, $align: center)
+		}
+
+		&__buttons {
+			@include flex($gap: 16px);
+			
+		}
+
+	}
+
+	&__container-form {
+		height: 100%;
+		width: 50%;
+		padding: 64px;
+		background-color: $color-bg-second;
+	}
+
+	&__form {
+		@include flex($direction: column, $align: start);
+		padding: 48px 40px;
+		border-radius: 25px;
+		box-shadow: $shadow;
+		background: $color-bg;
+		width: 100%;
+		height: 100%;
+
+		&-title {
+
+			color: $color-text-main;
+		}
+
+		&-input {
+			@include input;
+			width: 100%;
+			height: 68px;
+		}
+		&-textarea {
+			@include input;
+			width: 100%;
+			height: 132px;
+			resize: none;
+		}
+
+
+		&-button {
+			@include button-primary;
+			width: 100%;
+			height: 68px;
+			
+		}
+	}
+
+	
+}
+
+// consultation styled end
+
+
 // about styled start
 
 .about {
@@ -207,6 +599,7 @@
 	
 	&__img {
 		width: 60%;
+		overflow: hidden;
 	}
 
 	&__info {
@@ -225,9 +618,7 @@
 	&__desc {
 		@include text;
 
-		&_bold {
-			font-weight: bold;
-		}
+		
 	}
 
 	&__link {

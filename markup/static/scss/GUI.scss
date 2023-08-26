@@ -1,5 +1,7 @@
 //Global UI
-
+html {
+	scroll-behavior: smooth;
+}
 body {
 	@include font();
 	color: $color-text-second;
@@ -10,7 +12,7 @@ body {
 	flex-direction: column;
 	position: relative;
 	overflow-x: hidden;
-	scroll-behavior: smooth;
+	
 	&.no-scroll {
 		overflow: hidden;
 	}
@@ -31,6 +33,7 @@ body {
 	max-width: 1200px;
 	width: 100%;
 	margin: 0 auto;
+	height: 100%;
 	padding-left: 30px;
 	padding-right: 30px;
 	@include media-max-m {

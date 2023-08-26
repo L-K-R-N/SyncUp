@@ -102,7 +102,7 @@
 }	
 
 @mixin h2 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: $size-xl;
 	line-height: 48px;
 	font-family: $font-family-primary;
@@ -149,7 +149,6 @@
 	background: $bg-color;
 	border: 1px solid $bg-color;
 	border-radius: 999px;
-
 	transition: $transition-main;
 
 	&:hover {
@@ -165,7 +164,6 @@
 	background: $bg-color;
 	border: 1px solid $text-color;
 	border-radius: 999px;
-
 	transition: $transition-main;
 
 	&:hover {
@@ -174,32 +172,41 @@
 	}
 }
 
-@mixin input ($width: 100%, $height: 100%, $text-color: $color-text-second) {
+@mixin input (
+				$width: 100%, 
+				$height: 100%, 
+				$text-color: $color-text-second, 
+				$border-color: $color-primary,
+				$hover: $color-text-second,
+				$focus: $color-text-main,
+				$valid: $color-green,
+				$invalid: $color-red, 
+				) {
 	width: $width;
 	height: $height;
 	padding: 22px 24px;
-	border-radius: 999px;
+	border-radius: 32px;
 	color: $text-color;
 	background: transparent;
-	border: 1px solid $text-color;
-
+	outline: 1px solid $border-color;
+	border: none;
 	transition: $transition-main;
 
 	&:hover {
-		border: $color-primary;
-		color: $color-primary;
+		outline-color: $hover;
+		color: $hover;
 	}
 	&:focus {
-		border: $color-text-main;
-		color: $color-text-main;
+		outline-color: $focus;
+		color: $focus;
 	}
-	&:valid {
-		border: $color-green;
-		color: $color-green;
-	}
+	// &:valid {
+	// 	outline-color: $valid;
+	// 	color: $valid;
+	// }
 	&:invalid {
-		border: $color-red;
-		color: $color-red;
+		outline-color: $invalid;
+		color: $invalid;
 	}
 }
 
