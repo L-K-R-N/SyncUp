@@ -17,6 +17,9 @@ body {
 		overflow: hidden;
 	}
 }
+main {
+	flex-grow: 1;
+}
 
 .footer {
 	margin-top: auto;

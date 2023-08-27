@@ -26,10 +26,13 @@
 	@include hover-opacity;
 }
 
-
+.protection {
+	font-size: $size-xxs;
+}
 // menu styled start
 
 .menu {
+	@include flex($justify: end);
 	height: 100%;
 	width: 250px;
 
@@ -49,7 +52,37 @@
 	}
 }
 
+.social-menu {
 
+	&__list {
+
+		&__link {
+			@include hover-opacity
+			
+			
+		}
+	}
+}
+
+// burger styles start 
+
+.burger {
+	@include flex($direction: column, );
+
+	width: 40px;
+	height: 30px;
+	position: relative;
+	
+	&__line {
+		width: 100%;
+		background: $color-text-main;
+		height: 2px;
+		border: 2px solid $color-text-main;
+		border-radius: 20px;
+
+	}
+}
+// burger styles end
 
 
 // menu styled end
@@ -59,16 +92,22 @@
 .header {
 
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
+	left: 0;
 	z-index: 999;
 	background: $color-bg;
+	padding-top: 50px ;
 	&__content {
 		width: 100%;
 		@include flex ();
 		height: 64px;
-		margin-top: 50px;
+		
+	}
+
+	&-burger {
+		display: none;
 	}
 
 	&__connect-button {
@@ -100,8 +139,8 @@
 		width: 100%;
 		
 		&-container {
-			@include flex($direction: column, $align: start);
-			height: 445px;
+			@include flex($direction: column, $align: start, $gap: 85px);
+			height: auto;
 			width: 60%;
 		}
 	}
@@ -114,13 +153,9 @@
 	}
 
 	&__info {
-		@include flex($direction: column, $align: start);
-		height: 296px;
+		@include flex($direction: column, $align: start, $gap: 50px);
+		height: auto;
 		
-
-		&__text {
-			@include flex($direction: column, $align: center)
-		}
 
 		&__buttons {
 			@include flex($gap: 16px);
@@ -134,14 +169,14 @@
 	
 	&__button_demo {
 		@include button-outline();
-		
+		padding: 20px 40px;
 		height: 100%;
-		width: 147px;
+		width: auto;
 	}
 	&__button_connect {
 		@include button-primary();
 		height: 100%;
-		width: 317px;
+		
 	}
 
 	&__title {
@@ -171,7 +206,7 @@
 	&__content {
 		@include flex($direction: column, $gap: 50px);
 		width: 100%;
-		height: 414px;
+		height: auto;
 	}
 
 	&__title {
@@ -185,11 +220,11 @@
 	&__cards {
 		width: 100%;
 		height: 100%;
-		@include grid($columns: repeat(3, 1fr), $rows: 1fr, $gap: 24px)
+		@include grid($columns: repeat(3, 1fr), $rows: 1fr, $gap: 38px)
 	}
 
 	&__card {
-		@include flex($direction: column);
+		@include flex($direction: column, $gap: 24px, $justify: start);
 
 
 		&-ico {
@@ -208,6 +243,7 @@
 			@include h5;
 			font-weight: 600;
 			color: $color-text-main;
+			text-align: center;
 		}
 
 		&-desc {
@@ -247,9 +283,14 @@
 	}
 
 	&__info {
-		@include flex($direction: column);
-		height: 330px;
+		@include flex($direction: column, $gap: 37px);
+		height: auto;
 		width: 50%;
+
+		&__titles {
+			@include flex($direction: column, $gap: 15px);
+			height: auto;
+		}
 
 		&__buttons {
 			@include flex($gap: 16px);
@@ -275,6 +316,7 @@
 	&__title {
 		color: $color-text-main;
 		text-align: center;
+		width: 455px;
 	}
 	&__subtitle {
 		color: $color-text-main;
@@ -283,6 +325,7 @@
 	&__desc {
 		@include text;	
 		text-align: center;
+		width: 378px;
 	}
 }
 
@@ -310,10 +353,14 @@
 		width: 100%;
 	}
 
+	&__title {
+		text-align: center;
+	}
 
 	&__subtitle {
 		@include text;
-		text-align: center
+		text-align: center;
+		width: 455px;
 	}
 
 	&-tabs {
@@ -341,7 +388,7 @@
 
 		&__title {
 			@include h5;
-			
+			text-align: center;
 			
 		}
 
@@ -371,11 +418,12 @@
 			}
 
 			&__subtitle {
-					font-weight: 600;
+					font-weight: 400;
 
 			}
 
 			&-ico {
+				
 				position: absolute;
 				top: 0;
 				left: 0
@@ -419,6 +467,12 @@
 			&__list {
 				@include flex($direction: column, $gap: 16px, $align: start);
 				list-style: none;
+
+				&__ico {
+					min-height: 30px;
+					min-width: 30px;
+				}
+
 
 				&__item {
 					@include flex($gap: 11px);
@@ -481,7 +535,8 @@
 
 		&-ico {
 			cursor: pointer;
-			min-width: 30px
+			min-width: 30px;
+			@include hover-opacity
 		}
 		&-title {
 			@include text;
@@ -517,7 +572,7 @@
 
 .consultation {
 	width: 100%;
-	height: 706px;
+	height: auto;
 	margin-bottom: 80px;
 	
 	&__content {
@@ -563,7 +618,7 @@
 	}
 
 	&__form {
-		@include flex($direction: column, $align: start);
+		@include flex($direction: column, $align: start, $gap: 28px);
 		padding: 48px 40px;
 		border-radius: 25px;
 		box-shadow: $shadow;
@@ -608,7 +663,7 @@
 .about {
 	width: 100%;
 	height: auto;
-	margin-bottom: 80px;
+	margin-bottom: 220px;
 
 	&__content {
 		@include flex();
@@ -617,13 +672,14 @@
 	}
 	
 	&__img {
+		@include flex($justify: end);
 		width: 60%;
 		overflow: hidden;
 	}
 
 	&__info {
-		@include flex($direction: column, $align: start);
-		height: 484px;
+		@include flex($direction: column, $align: start, $gap: 24px);
+		height: auto;
 		width: 40%;
 
 
@@ -672,13 +728,18 @@
 
 .footer {
 	width: 100%;
-	padding: 16px 10px;
-
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-bottom: 20px;
+	padding-top: 40px;
 	&__content {
 		width: 100%;
 		@include flex ();
 		height: 90px;
-		margin-bottom: 20px;
+		
+		padding: 16px 10px;
 	}
 
 	&__social-menu {
@@ -687,20 +748,17 @@
 		
 	}
 
-	.social-menu {
-
-		&__list {
-
-			&__link {
-				@include hover-opacity
-				
-				
-			}
-		}
+	&-container {
+		@include flex($direction: column, $gap: 20px)
 	}
 
-	&-menu__list__item {
-		font-size: $size-xs;
+	
+	&-menu {
+		width: 200px;
+
+		&__list__item {
+			font-size: $size-xs;
+		}
 	}
 }
 
@@ -717,14 +775,12 @@
 // header styled start
 
 	.header {
-		margin: 40px 0;
+		
 
-		&__content {
-			margin: 0;
-		}
-		&__connect-button {
-			display: none;
-		}
+		// &__content {
+		// 	margin: 0;
+		// }
+		
 
 
 	}
@@ -739,37 +795,8 @@
 	// intro styles start 
 		
 		.intro {
-			height: 60vh;
 
-			&__content {
-				height: 100%;
-			}
-			&__content-container {
-				width: 100%;
-				align-items: center;
-				gap: 20px;
-			}
 
-			&__info {
-				align-items: center;
-				gap: 40px;
-
-			}	
-
-			&__title {
-				text-align: center;
-				width: 80%;
-			}
-			&__desc {
-				text-align: center;
-			}
-
-			&__img {
-				display: none;
-				
-			}
-
-			
 		}
 		
 		// intro styled end
@@ -795,7 +822,10 @@
 		
 		.demo {
 
-			
+			&__content {
+
+				
+			}
 		}
 		
 		// demo styled end
@@ -834,7 +864,19 @@
 		
 		.consultation {
 
+			&__content {
+
+
+			}
 			
+			&__info {
+				padding: 30px;
+				width: 45%;
+			}
+			&__container-form {
+				padding: 30px;
+				width: 55%;
+			}
 		}
 		
 		// consultation styled end
@@ -847,7 +889,21 @@
 		
 		.about {
 
-			
+			&__content {
+				flex-direction: column;
+				gap: 40px;
+			}
+
+			&__info {
+				width: 100%;
+			}
+
+			&__img {
+				width: 100%;
+				border-radius: 32px;
+				background: lighten($color-primary, 36%);
+				
+			}
 		}
 		
 		// about styled end
@@ -870,9 +926,16 @@
 
 @include media-max-m {
 
+
+	
 	// header styled start
 	
-		
+	.header {
+
+		&__connect-button {
+			display: none;
+		}
+	}
 	
 	
 	// header styled end
@@ -883,9 +946,43 @@
 	
 	// intro styles start 
 		
+	.intro {
+
+		height: 60vh;
+
+			&__content {
+				height: 100%;
+			}
+			&__content-container {
+				width: 100%;
+				align-items: center;
+				// gap: 20px;
+			}
+
+			&__info {
+				align-items: center;
+				gap: 40px;
+
+			}	
+
+			&__title {
+				text-align: center;
+				width: 80%;
+			}
+			&__desc {
+				text-align: center;
+			}
+
+			&__img {
+				display: none;
+				
+			}
+
+			
 		
+	}
 		
-		// intro styled end
+	// intro styled end
 		
 		
 		
@@ -908,6 +1005,22 @@
 		
 		.demo {
 
+			&__content {
+				gap: 40px;
+				flex-direction: column;
+			}
+
+			&__img {
+				width: 100%;
+			}
+
+			&__info {
+				width: 80%;
+			}
+
+			&__title {
+
+			}
 			
 		}
 		
@@ -921,7 +1034,21 @@
 		
 		.prices {
 
-			
+			&-tabs {
+
+				&__main {
+				}
+
+				&__plan {
+					padding: 40px 30px;
+					width: 60%;
+				}
+
+				&__benefits {
+					padding:  40px 30px;
+					width: 40%;
+				}
+			}
 		}
 		
 		// prices styled end
@@ -947,6 +1074,19 @@
 		
 		.consultation {
 
+			&__content {
+
+				flex-direction: column;
+			}
+			
+			&__info {
+				padding: 50px 30px;
+				width: 100%;
+			}
+			&__container-form {
+				padding: 50px 30px;
+				width: 100%;
+			}
 			
 		}
 		
@@ -984,10 +1124,22 @@
 
 	@include media-max-s {
 
+		.title {
+			font-size: $size-l;
+		}
+	
+
 		// header styled start
 		
 			.header {
-	
+
+				&-menu__list {
+					display: none;
+				}
+				
+				&-burger {
+					display: flex;
+				}
 		
 			}
 		
@@ -1000,7 +1152,44 @@
 		
 		// intro styles start 
 		
-		
+		.intro {
+			margin-top: 184px;
+
+
+			&__content {
+
+
+			}
+
+			&__title {
+				width: 100%;
+			}
+
+			&__info {
+
+				&__buttons {
+					flex-direction: column;
+					width: 100%;
+					height: auto;
+
+
+				}
+
+				
+
+				
+			}
+
+			&__button {
+				height: 64px;
+				width: 100%;
+			}
+			
+
+			&__desc {
+				width: auto;
+			}
+		}
 		
 		// intro styled end
 		
@@ -1012,6 +1201,22 @@
 		
 		.benefits {
 
+			&__cards {
+				grid-template-columns: repeat(1, 1fr);
+				gap: 40px;
+			}
+
+			&__card {
+
+				&-title {
+					font-size: $size-l;
+				}
+
+				&-desc {
+					width: 85%;
+					font-size: $size-s;
+				}
+			}
 			
 		}
 		
@@ -1025,6 +1230,20 @@
 		
 		.demo {
 
+			&__info {
+
+				&__buttons {
+					flex-direction: column;
+					width: 100%;
+				}
+
+			}
+			
+
+			&__button {
+				
+				width: 100%;
+			}
 			
 		}
 		
@@ -1038,7 +1257,30 @@
 		
 		.prices {
 
-			
+			&__subtitle {
+				width: auto;
+			}
+
+			&__title {
+				width: auto;
+			}
+
+			&-tabs {
+
+				&__main {
+					flex-direction: column-reverse;
+				}
+
+				&__plan {
+
+					width: 100%;
+				}
+
+				&__benefits {
+
+					width: 100%;
+				}
+			}
 		}
 		
 		// prices styled end
@@ -1091,6 +1333,9 @@
 		
 		.footer {
 
+			&-menu {
+				display: none;
+			}
 			
 		}
 		// footer styles end
