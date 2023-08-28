@@ -57,8 +57,11 @@
 	&__list {
 
 		&__link {
-			@include hover-opacity
+			@include hover-opacity;
 			
+			&:hover {
+				transform: translateY(-5px);
+			}
 			
 		}
 	}
@@ -87,17 +90,71 @@
 
 // menu styled end
 
+// circle styles start
+
+@keyframes pulce {
+	from {
+		transform: scale(1.0);
+	}
+
+	50% {
+		transform: scale(1.6);
+	}
+
+	to {
+		transform: scale(1.0);
+	}
+}
+
+.circles {
+	position: absolute;
+	top: -350px;
+	right: -680px;
+	width: 1380px;
+	height: 1380px;
+	z-index: -999;
+	.circle {
+		border-radius: 50%;
+		@include flex($justify: center);
+		animation: pulce 0.5s ease-in-out 0 infinite ;
+		
+
+		&-first {
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 239, 191, 1);
+		}
+		&-second {
+			
+			width: 1200px;
+			height: 1200px;
+			background: rgba(252, 200, 39, 1);
+		}
+
+		&-third {
+			width: 1040px;
+			height:  1040px;
+
+			background: rgba(255, 156, 55, 0.7);
+		}
+	}
+
+	
+
+	
+
+}
+// circle styles end
 
 // header styled start
 .header {
 
 	width: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 999;
-	background: $color-bg;
+	// position: absolute;
+	// top: 0;
+	// right: 0;
+	// left: 0;
+	
 	padding-top: 50px ;
 	&__content {
 		width: 100%;
@@ -128,12 +185,13 @@
 	width: 100%;
 	height: 698px;
 	padding-bottom: 136px;
-	min-height: 100vh;
+	min-height: 60vh;
 
 	margin-top: 114px;
-	
+	// background: url(../img/content/phones.png) no-repeat right -10% top 100%;
 
 	&__content {
+		position: relative;
 		@include flex();
 		height: 100%;
 		width: 100%;
@@ -146,10 +204,18 @@
 	}
 	
 	&__img {
+		position: absolute;
+		top: -20%;
+		right: -35%;
 		@include flex($justify: center);
 		width: 30%;
-		height: 50%;
-		
+		height: 150%;
+		width: 100%;
+	}
+
+	#intro-img {
+		width: 100%;
+		height: 100%;
 	}
 
 	&__info {
@@ -381,6 +447,9 @@
 			cursor: pointer;
 			transition: $transition-main;
 
+			&.active-tab {
+				border-color: $color-primary;
+			}
 			&:hover {
 				border-color: $color-primary;
 			}
@@ -392,12 +461,22 @@
 			
 		}
 
+		&__container-main {
+			@include grid ($columns: 1fr, $rows: 1fr);
+
+		}
 		&__main {
 			@include flex($align: stretch);
+			grid-area: 1 / 1 / 2 / 2;
 			width: 100%;
 			overflow: hidden;
 			border-radius: 20px;
 			box-shadow: $shadow;
+			opacity: 0;
+			transition: $transition-main;
+			&.active-tab {
+				opacity: 1;
+			}
 		}
 
 		&__plan {
@@ -526,15 +605,16 @@
 		
 		border: 1px solid $color-primary;
 		border-radius: 20px;
-		padding: 36px 48px 20px 48px;
+		transition: $transition-main;
 
 		&-header {
 			@include flex($align: start, $gap: 20px);
-			
+			padding: 36px 48px 36px 48px;
+			cursor: pointer;
 		}
 
 		&-ico {
-			cursor: pointer;
+			
 			min-width: 30px;
 			@include hover-opacity
 		}
@@ -547,9 +627,18 @@
 
 		&-answer {
 			@include small-text;
-			margin-top: 16px;
+			padding: 0 48px;
 			height: 0;
 			overflow: hidden;
+			transition: all 0.5s ease-in-out;
+			&.active-accordion {
+				
+				margin-bottom: 36px;
+			}
+		}
+
+		&:hover {
+			border-color: $color-text-second;
 		}
 	}
 
@@ -948,7 +1037,7 @@
 		
 	.intro {
 
-		height: 60vh;
+		height: 80vh;
 
 			&__content {
 				height: 100%;
@@ -1127,6 +1216,9 @@
 		.title {
 			font-size: $size-l;
 		}
+		.subtitle {
+			font-size: $size-m;
+		}
 	
 
 		// header styled start
@@ -1154,18 +1246,27 @@
 		
 		.intro {
 			margin-top: 184px;
-
+			height: 60vh;
 
 			&__content {
 
 
+				&-container {
+					gap: 40px;
+				}
 			}
 
 			&__title {
 				width: 100%;
+				text-align: left;
+			}
+
+			&__desc {
+				text-align: left;
 			}
 
 			&__info {
+
 
 				&__buttons {
 					flex-direction: column;
@@ -1238,6 +1339,14 @@
 				}
 
 			}
+
+			&__title {
+				width: auto;
+			}
+
+			&__desc {
+				width: auto;
+			}
 			
 
 			&__button {
@@ -1268,12 +1377,21 @@
 			&-tabs {
 
 				&__main {
-					flex-direction: column-reverse;
+					flex-direction: column;
 				}
 
 				&__plan {
 
 					width: 100%;
+
+					&__rate {
+						font-size: $size-xl;
+					}
+
+					&__desc {
+
+						width: auto;
+					}
 				}
 
 				&__benefits {
@@ -1306,7 +1424,15 @@
 		
 		.consultation {
 
-			
+			&__container-form {
+
+				padding: 0;
+				
+			}
+
+			&__form {
+				border-radius: 0;
+			}
 		}
 		
 		// consultation styled end

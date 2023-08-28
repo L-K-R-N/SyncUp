@@ -225,3 +225,27 @@
 	flex-direction: $direction;
 	gap: $gap;
 }
+
+
+// animation
+
+@mixin pulce ($width, $height) {
+	@keyframes pulce {
+		from {
+			width: $width;
+			width: $height;
+
+		}
+
+		50% {
+			width: $width * 1.1;
+			width: $height * 1.1;
+		}
+
+		to {
+			width: $width;
+			width: $height;
+
+		}
+	}
+}

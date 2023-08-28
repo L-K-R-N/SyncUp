@@ -7,55 +7,103 @@
                 <h5 class="prices__subtitle">Наши цены не только укладываются в ваш бюджет, но и не идут в ущерб качеству.</h5>
             </div>
             <div class="prices-tabs__header">
-                <div class="prices-tabs__container-title">
+                <div class="prices-tabs__container-title active-tab" data-tab="month">
                     {{Icon iconName="check-square" className="prices-tabs__title-ico"}}
-                    <h4 class="prices-tabs__title">На месяц</h4>
+                    <h4 class="prices-tabs__title" >На месяц</h4>
                 </div>
-                <div class="prices-tabs__container-title">
+                <div class="prices-tabs__container-title" data-tab="year">
                     {{Icon iconName="row" className="prices-tabs__title-ico"}}
                     <h4 class="prices-tabs__title">На год</h4>
                 </div>
             </div>
            
-            <div class="prices-tabs__main">
-                <div class="prices-tabs__plan">
-                    
-                    <div class="prices-tabs__plan__titles">
-                        {{Icon iconName="rating" className="prices-tabs__plan-ico"}}
-                        <h4 class="prices-tabs__plan__subtitle">На месяц</h4>
-                        <h3 class="prices-tabs__plan__title">Основной</h3>
-                    </div>
-                    <p class="prices-tabs__plan__desc">
-                        Ознакомьтесь с нашим месячным планом, который содержит в себе ряд следующих преимуществ:
-                    </p>
-                    <h3 class="prices-tabs__plan__rate">
-                        10 000 ₸ <span class="prices-tabs__plan__rate_small">/ в месяц</span>
-                        </span>
-                    </h3>
-                    <button class="prices-tabs__plan__button">
-                        Подключить
-                    </button>
-                </div>
-                <div class="prices-tabs__benefits">
-                    <h4 class="prices-tabs__benefits__title">
-                        Что я получаю?
-                    </h4>
-                    <ul class="prices-tabs__benefits__list">
-                        <li class="prices-tabs__benefits__list__item">
-                            {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Подробный состав блюд
-                        </li>
-                        <li class="prices-tabs__benefits__list__item">
-                            {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Собственная база изображений
-                        </li>
-                        <li class="prices-tabs__benefits__list__item">
-                            {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Редактирование меню
-                        </li>
-                        <li class="prices-tabs__benefits__list__item">
-                            {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Размещение на хостинге
-                        </li>
-                        
 
-                    </ul>
+            <div class="prices-tabs__container-main">
+                <div class="prices-tabs__main active-tab" data-tab="month">
+                    <div class="prices-tabs__plan">
+                        
+                        <div class="prices-tabs__plan__titles">
+                            {{Icon iconName="rating" className="prices-tabs__plan-ico"}}
+                            <h4 class="prices-tabs__plan__subtitle">На месяц</h4>
+                            <h3 class="prices-tabs__plan__title">Основной</h3>
+                        </div>
+                        <p class="prices-tabs__plan__desc">
+                            Ознакомьтесь с нашим месячным планом, который содержит в себе ряд следующих преимуществ:
+                        </p>
+                        <h3 class="prices-tabs__plan__rate">
+                            10 000 ₸ <span class="prices-tabs__plan__rate_small">/ в месяц</span>
+                            </span>
+                        </h3>
+                        <button class="prices-tabs__plan__button">
+                            Подключить
+                        </button>
+                    </div>
+                    <div class="prices-tabs__benefits">
+                        <h4 class="prices-tabs__benefits__title">
+                            Что я получаю?
+                        </h4>
+                        <ul class="prices-tabs__benefits__list">
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Подробный состав блюд
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Собственная база изображений
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Редактирование меню
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Размещение на хостинге
+                            </li>
+                            
+    
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="prices-tabs__main " data-tab="year">
+                    <div class="prices-tabs__plan">
+                        
+                        <div class="prices-tabs__plan__titles">
+                            {{Icon iconName="rating" className="prices-tabs__plan-ico"}}
+                            <h4 class="prices-tabs__plan__subtitle">На год</h4>
+                            <h3 class="prices-tabs__plan__title">Основной</h3>
+                        </div>
+                        <p class="prices-tabs__plan__desc">
+                            Ознакомьтесь с нашим годовым планом, который содержит в себе ряд следующих преимуществ:
+                        </p>
+                        <h3 class="prices-tabs__plan__rate">
+                            80 000 ₸ <span class="prices-tabs__plan__rate_small">/ в год</span>
+                            </span>
+                        </h3>
+                        <button class="prices-tabs__plan__button">
+                            Подключить
+                        </button>
+                    </div>
+                    <div class="prices-tabs__benefits">
+                        <h4 class="prices-tabs__benefits__title">
+                            Что я получаю?
+                        </h4>
+                        <ul class="prices-tabs__benefits__list">
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Подробный состав блюд
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Собственная база изображений
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Редактирование меню
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Размещение на хостинге
+                            </li>
+                            <li class="prices-tabs__benefits__list__item">
+                                {{Icon iconName="check-fill" className="prices-tabs__benefits__list__ico"}} Техническая поддержка
+                            </li>
+                            
+    
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
