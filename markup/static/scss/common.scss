@@ -60,7 +60,7 @@
 			@include hover-opacity;
 			
 			&:hover {
-				transform: translateY(-5px);
+				transform: scale(1.1);
 			}
 			
 		}
@@ -150,12 +150,12 @@
 .header {
 
 	width: 100%;
-	// position: absolute;
-	// top: 0;
-	// right: 0;
-	// left: 0;
-	
-	padding-top: 50px ;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	padding: 35px 0;
+	transition: $transition-main;
 	&__content {
 		width: 100%;
 		@include flex ();
@@ -185,9 +185,11 @@
 	width: 100%;
 	height: 698px;
 	padding-bottom: 136px;
-	min-height: 60vh;
-
-	margin-top: 114px;
+	min-height: 100vh;
+	max-width: 100vw;
+    overflow: hidden;
+	padding-top: 114px;
+	position: relative;
 	// background: url(../img/content/phones.png) no-repeat right -10% top 100%;
 
 	&__content {
@@ -463,19 +465,25 @@
 
 		&__container-main {
 			@include grid ($columns: 1fr, $rows: 1fr);
-
+			overflow: hidden;
+			box-shadow: $shadow;
+			border-radius: 20px;
 		}
 		&__main {
 			@include flex($align: stretch);
 			grid-area: 1 / 1 / 2 / 2;
 			width: 100%;
 			overflow: hidden;
-			border-radius: 20px;
-			box-shadow: $shadow;
+			
+			
 			opacity: 0;
-			transition: $transition-main;
+			transition: all 0.5s ease-in-out;
+			visibility: hidden;
+			transform: translateY(100%);
 			&.active-tab {
 				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
 			}
 		}
 
@@ -488,6 +496,7 @@
 				@include flex($direction: column, $gap: 12px, $align: start, $justify: center);
 				position: relative;
 				padding-left: 92px;
+				width: 100%
 			}
 
 			&__title {
@@ -504,8 +513,20 @@
 			&-ico {
 				
 				position: absolute;
-				top: 0;
-				left: 0
+				top: -15%;
+				left: 0;
+			}
+
+			&__discount {
+				width: auto;
+				padding: 12px;
+				font-size: $size-xxs;
+				background: $color-primary;
+				border-radius: 20px;
+				position: absolute;
+				top: -14%;
+				right: -8%;
+				color: $color-bg;
 			}
 			&__desc {
 				@include text;
@@ -801,7 +822,7 @@
 			border-bottom: none;
 			transform: rotate(45deg) translateY(-50%);
 			position: absolute;
-			top: 47%;
+			top: 43%;
 			right: 0;
 		}
 
@@ -1040,7 +1061,7 @@
 		height: 80vh;
 
 			&__content {
-				height: 100%;
+				height: auto;
 			}
 			&__content-container {
 				width: 100%;
@@ -1245,8 +1266,8 @@
 		// intro styles start 
 		
 		.intro {
-			margin-top: 184px;
-			height: 60vh;
+			margin-top: 40px;
+			height: auto;
 
 			&__content {
 
@@ -1378,6 +1399,12 @@
 
 				&__main {
 					flex-direction: column;
+
+					transform: translateY(0);
+					transform: translateX(100%);
+					&.active-tab {
+						transform: translateX(0);
+					}
 				}
 
 				&__plan {

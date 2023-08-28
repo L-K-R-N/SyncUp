@@ -89,3 +89,19 @@ const accordion = (cards) => {
 }
 
 accordion(document.querySelector('.questions__cards'))
+
+// изменение цвета header'a
+
+const changeHeaderBg = (header) => {
+	document.addEventListener('scroll', () => {
+		if (window.scrollY > 100) {
+			header.style.background = '#ffffff';
+			header.style.zIndex = 999;
+		} else {
+			header.style.background = 'transparent';
+			header.style.zIndex = 1;
+		}
+	})
+}
+
+changeHeaderBg(document.querySelector('.header'))
