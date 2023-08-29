@@ -75,15 +75,23 @@ const accordion = (cards) => {
 		
 		if (targetContent.classList.contains('active-accordion')) {
 			targetContent.classList.remove('active-accordion');
+			target.classList.remove('active-accordion');
 			targetContent.style.height = 0;
+			
 
 		} else {
-			for (let elem of document.querySelectorAll('.questions__card-answer')) {
-				elem.classList.remove('active-accordion')
-				elem.style.height = 0;
+			for (let answer of document.querySelectorAll('.questions__card-answer')) {
+				answer.classList.remove('active-accordion')
+				answer.style.height = 0;
+
+			}
+			for (let header of document.querySelectorAll('.questions__card-header')) {
+				header.classList.remove('active-accordion')
 			}
 			targetContent.classList.add('active-accordion')
-			targetContent.style.height = targetContent.scrollHeight + 'px'
+			target.classList.add('active-accordion')
+			targetContent.style.height = targetContent.scrollHeight + 'px';
+			
 		}
 	})
 }
@@ -105,3 +113,28 @@ const changeHeaderBg = (header) => {
 }
 
 changeHeaderBg(document.querySelector('.header'))
+
+// Появление / скрытие меню
+
+// При клике на бургер будет проверяться наличие у меню класса 'show'
+// Если он есть, то убираем, если нет, тогда добавляем
+
+const toggleMenu = () => {
+	const menu = document.querySelector('.header-menu')
+	document.querySelector('.header-burger').addEventListener('click', (e) => {
+		
+		menu.classList.toggle('show')
+		document.body.classList.toggle('no-scroll')
+	})
+
+	document.querySelector('.header-menu__list').addEventListener('click', (e) => {
+		const target = e.target.closest('.header-menu__list__link')
+
+		if (!target) return;
+
+		menu.classList.remove('show');
+		document.body.classList.remove('no-scroll')
+	})
+}
+
+toggleMenu()
