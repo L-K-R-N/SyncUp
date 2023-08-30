@@ -78,6 +78,14 @@
 	}
 }
 
+@mixin hover-scale($transition: $transition-slow) {
+	transition: $transition;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
 @mixin link ($color: $color-text-second, $hover: $color-primary) {
 	color: $color;
 	transition: $transition-main;
@@ -86,6 +94,8 @@
 		color: $hover;
 	}
 }
+
+
 
 // Fonts
 
@@ -249,3 +259,9 @@
 		}
 	}
 }
+
+// blur-circle
+
+// @mixin blur-circle($width: 100px, $height: 100px) {
+// 	po
+// }

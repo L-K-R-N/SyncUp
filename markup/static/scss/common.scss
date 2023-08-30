@@ -96,7 +96,7 @@
 		border: 2px solid $color-text-main;
 		border-radius: 20px;
 		left: 0;
-		transition: transform 0.5s ease, top 0.2s ease 0.5s, opacity 0.5s ease ;
+		transition: transform 0.5s ease, top 0.2s ease 0.5s, opacity 0.5s ease, bottom 0.1s ease ;
 		&_first {
 			top: 0;
 		}
@@ -142,6 +142,26 @@
 	}
 }
 
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes scale {
+	from {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}
 .circles {
 	position: absolute;
 	top: -60%;
@@ -154,12 +174,14 @@
 		@include flex($justify: center);
 		
 		
+		
 
 		&-first {
 			width: 100%;
 			height: 100%;
 			background: rgba(255, 239, 191, 1);
 			animation: pulce 11s ease-in-out infinite ;
+			
 		}
 		&-second {
 			
@@ -256,9 +278,11 @@
 			height: auto;
 			width: 60%;
 		}
+
+		
 	}
 	
-	&__img {
+	&__img-container {
 		position: absolute;
 		top: -20%;
 		right: -35%;
@@ -266,11 +290,21 @@
 		width: 30%;
 		height: 150%;
 		width: 100%;
+		transform: translateX(100vw);
+		visibility: hidden;
+		transition: transform 1.4s cubic-bezier(0.34, 1.36, 0.64, 1) 2.2s;
+
+		&.show {
+			visibility: visible;
+			transform: translateX(0);
+		}
 	}
 
-	#intro-img {
+	&__img {
 		width: 100%;
 		height: 100%;
+		transform: transform 2s ease;
+		will-change: transform;
 	}
 
 	&__info {
@@ -281,6 +315,13 @@
 		&__buttons {
 			@include flex($gap: 16px);
 			height: 64px;
+			opacity: 0;
+			transition: opacity 0.3s linear 1.6s;
+			visibility: hidden;
+			&.show {
+				opacity: 1;
+				visibility: visible;
+			}
 		}
 
 	
@@ -302,18 +343,41 @@
 
 	&__title {
 		color: $color-text-main;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.7s linear;
 
-	}
-	&__subtitle {
-		color: $color-text-main;
+		&.show {
+			opacity: 1;
+			visibility: visible;
+		}
 	}
 	
 	&__desc {
 		@include text;	
 		width: 540px;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.5s linear 0.9s;
 
-		
+		&.show {
+			opacity: 1;
+			visibility: visible;
+		}
 	}
+
+	// .intro__content.show {
+		
+	// 		.intro__title, .intro__desc, .intro__info__buttons {
+	// 			opacity: 1;
+	// 		}
+			
+	// 		.intro__img-container {
+	// 			transform: translateX(0);
+	// 		}
+			
+		
+	// }
 }
 
 // intro styled end
@@ -349,15 +413,16 @@
 	&__card {
 		@include flex($direction: column, $gap: 24px, $justify: start);
 
-
+		
 		&-ico {
-
+			transition: $transition-slow;
 			&-container {
 				@include flex($justify: center);
 				border: 2px dashed $color-primary;
 				border-radius: 50%;
 				width: 120px;
 				height: 120px;
+				transition: $transition-slow;
 			}
 			
 		}
@@ -372,6 +437,14 @@
 		&-desc {
 			
 			text-align: center;
+		}
+
+		&:hover {
+
+
+			.benefits__card-ico {
+				animation: scale 5s ease infinite;
+			}
 		}
 	}
 }
@@ -742,9 +815,11 @@
 			padding: 0 48px;
 			height: 0;
 			overflow: hidden;
-			transition: all 0.5s ease-in-out;
+			transition: height 0.3s ease-in-out, margin 0.5s ease-in-out, opacity 0.3s ease 0.4s;
+			will-change: contents;
+			opacity: 0;
 			&.active-accordion {
-				
+				opacity: 1;
 				margin-bottom: 36px;
 			}
 		}
@@ -778,6 +853,7 @@
 	position: relative;
 
 	&-blur-circle {
+		left: -20%;
 		top: 20%;
 		width: 900px;
 		height: 900px;
@@ -1455,19 +1531,19 @@
 							&__line {
 								top: 50%;
 								left: 0;
-								
+								transition: transform 0.5s ease 0.3s, top 0.3s ease, opacity 0.3s ease ;
 								// transform: translateY(-50%);
 								&_second {
 									opacity: 0;
 								}
 
 								&_first {
-									transform: rotate(225deg);
+									transform: rotate(135deg);
 									
 								}
 
 								&_third {
-									transform: rotate(-225deg);
+									transform: rotate(-135deg);
 								}
 							}
 						}
@@ -1735,6 +1811,7 @@
 		
 		.consultation {
 
+			
 			&__container-form {
 
 				padding: 0;

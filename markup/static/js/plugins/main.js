@@ -138,3 +138,37 @@ const toggleMenu = () => {
 }
 
 toggleMenu()
+
+// Паралакс
+
+const parallax = (container, elements) => {
+	container.addEventListener('mousemove', (e) => {
+		let clientX = e.clientX;
+		let clientY = e.clientY;
+		const containerLeft = container.getBoundingClientRect().left;
+		const containerTop = container.getBoundingClientRect().top;
+
+		const coordX = clientX - containerLeft - (container.offsetWidth / 2);
+		const coordY = clientY - containerTop - (container.offsetHeight / 2);
+
+		for (let elem of elements) {
+			const speed = elem.dataset.speed;
+			const x = -(coordX * speed).toFixed(2)
+			const y = -(coordY * speed).toFixed(2)
+			elem.setAttribute('style', `transform: translate(${x}px, ${y}px)`)
+			
+		}
+	})
+}
+
+parallax(document.querySelector('.intro__img-container'), document.querySelectorAll('.intro__img'))
+
+// Появление первого блока
+
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelector('.intro__title').classList.add('show')
+	document.querySelector('.intro__desc').classList.add('show')
+	document.querySelector('.intro__info__buttons').classList.add('show')
+	document.querySelector('.intro__img-container').classList.add('show')
+	console.log(1)
+})
