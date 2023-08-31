@@ -180,7 +180,7 @@
 			width: 100%;
 			height: 100%;
 			background: rgba(255, 239, 191, 1);
-			animation: pulce 11s ease-in-out infinite ;
+			// animation: pulce 11s infinite ;
 			
 		}
 		&-second {
@@ -215,7 +215,7 @@
 	width: 646px;
 	height: 646px;
 	background: radial-gradient(34.64% 34.64% at 52.25% 62.44%, rgba(255, 156, 55, 0.3) 0%, rgba(255, 156, 55, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-
+	z-index: -999;
 	padding: 20px;
 }
 // circle styles end
@@ -224,12 +224,13 @@
 .header {
 
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
-	padding: 35px 0;
+	padding: 50px 0 16px 0;
 	transition: $transition-main;
+	
 	z-index: 999;
 	&__content {
 		width: 100%;
@@ -248,7 +249,13 @@
 		box-shadow: $shadow;
 	}
 
-
+	&.fixed {
+		position: fixed;
+		background: $color-bg;
+		z-index: 999;
+		padding: 16px 0;
+		box-shadow: 0 2px 4px 0 #0000001a;
+	}
 }
 
 // header styled end
@@ -442,9 +449,7 @@
 		&:hover {
 
 
-			.benefits__card-ico {
-				animation: scale 5s ease infinite;
-			}
+			
 		}
 	}
 }
@@ -458,6 +463,7 @@
 	width: 100%;
 	height: auto;
 	margin-bottom: 80px;
+	overflow: hidden;
 
 	&__content {
 		@include flex($gap: 136px);
@@ -534,19 +540,23 @@
 .prices {
 	width: 100%;
 	height: auto;
-	margin-bottom: 80px;
-	position: relative;;
+	padding-bottom: 80px;
+
+	position: relative;
+	overflow: hidden;
 	&-blur-circle {
 		&_first {
-			top: 30%;
+			top: 20%;
 			left: -10%;
+			z-index: -999;
 		}
 		
 		&_second {
 			left: 70%;
-			top: -50%;
+			top: -20%;
 			width: 900px;
 			height: 900px;
+			z-index: -999;
 	
 		}
 	}
@@ -612,7 +622,7 @@
 			overflow: hidden;
 			box-shadow: $shadow;
 			border-radius: 20px;
-
+			
 			
 		}
 		&__main {
@@ -623,14 +633,15 @@
 			
 			
 			opacity: 0;
-			transition: all 0.5s ease-in-out;
+			transition: transform 0.5s, opacity 0.5s, visibility 0.1s 0.5s;
+			transform: translateY(20%);
 			visibility: hidden;
-			transform: translateY(100%);
 			&.active-tab {
+				transition: transform 0.5s 0.1s, opacity 0.5s 0.1s;
 				opacity: 1;
-				visibility: visible;
 				transform: translateY(0);
-			}
+				visibility: visible;
+			}	
 		}
 
 		&__plan {
@@ -638,7 +649,7 @@
 			padding: 64px;
 			@include flex($direction: column, $gap: 32px, $align: start);
 			position: relative;
-
+			
 			&__titles {
 				@include flex($direction: column, $gap: 12px, $align: start, $justify: center);
 				position: relative;
@@ -748,14 +759,16 @@
 .questions {
 	width: 100%;
 	height: auto;
-	margin-bottom: 80px;
+
 	position: relative;
+	overflow: hidden;
 
 	&-blur-circle {
 		width: 600px;
 		height: 600px;
 		left: 80%;
-		top: 45%;
+		top: -15%;
+		z-index: -999;
 	}
 	
 	&__content {
@@ -801,7 +814,7 @@
 			
 			min-width: 30px;
 			@include hover-opacity;
-			transition: all 0.5s ease-in-out;
+			transition: all 0.5s ;
 			
 		}
 		&-title {
@@ -815,7 +828,7 @@
 			padding: 0 48px;
 			height: 0;
 			overflow: hidden;
-			transition: height 0.3s ease-in-out, margin 0.5s ease-in-out, opacity 0.3s ease 0.4s;
+			transition: height 0.3s , margin 0.5s , opacity 0.3s ease 0.3s;
 			will-change: contents;
 			opacity: 0;
 			&.active-accordion {
@@ -849,14 +862,16 @@
 .consultation {
 	width: 100%;
 	height: auto;
-	margin-bottom: 80px;
+	padding: 80px 0;
 	position: relative;
+	overflow: hidden;
 
 	&-blur-circle {
 		left: -20%;
-		top: 20%;
+		top: -20%;
 		width: 900px;
 		height: 900px;
+		z-index: -999;
 	}
 	&__content {
 		@include flex();
@@ -947,6 +962,7 @@
 	width: 100%;
 	height: auto;
 	margin-bottom: 80px;
+	overflow: hidden;
 
 	&__content {
 		@include flex();
@@ -1203,6 +1219,10 @@
 
 @include media-max-m {
 
+	.circles {
+		width: 1000px;
+		height: 1000px;
+	}
 
 	
 	// header styled start
@@ -1449,7 +1469,7 @@
 			.circle {
 				
 				@include flex($justify: center);
-				animation: pulce 0.5s ease-in-out 0 infinite ;
+				animation: pulce 0.5s  0 infinite ;
 				
 
 				&-first {
@@ -1480,7 +1500,7 @@
 
 		.blur-circle {
 			display: none;
-			z-index: -100;
+			z-index: -999;
 		}
 		// circle styles end
 
@@ -1500,7 +1520,7 @@
 					flex-direction: column;
 					background: $color-bg;
 
-					transition: all 0.5s ease-in-out;
+					transition: all 0.5s ;
 					padding: 140px 0;
 
 					&__link {
@@ -1725,15 +1745,21 @@
 				&__container-title {
 					width: 100%;
 					justify-content: start;
+					&:hover {
+						opacity: 1;
+					}
 				}
 
 				&__main {
 					flex-direction: column;
 
 					transform: translateY(0);
-					transform: translateX(100%);
+					transform: translateX(30%);
+					transition: transform 0.5s, opacity 0.5s;
+
 					&.active-tab {
 						transform: translateX(0);
+						transition: transform 0.5s 0.1s, opacity 0.5s 0.1s;
 					}
 				}
 

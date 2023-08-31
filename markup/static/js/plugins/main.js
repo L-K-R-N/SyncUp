@@ -102,12 +102,11 @@ accordion(document.querySelector('.questions__cards'))
 
 const changeHeaderBg = (header) => {
 	document.addEventListener('scroll', () => {
-		if (window.scrollY > 100) {
-			header.style.background = '#ffffff';
-			header.style.zIndex = 999;
+		if (window.scrollY > 34) {
+			header.classList.add('fixed')
+			
 		} else {
-			header.style.background = 'transparent';
-			header.style.zIndex = 1;
+			header.classList.remove('fixed')
 		}
 	})
 }
@@ -161,8 +160,8 @@ const parallax = (container, elements) => {
 	})
 }
 
-parallax(document.querySelector('.intro__img-container'), document.querySelectorAll('.intro__img'))
-
+parallax(document.querySelector('.intro'), document.querySelectorAll('.intro__img'))
+parallax(document.querySelector('.intro'), document.querySelectorAll('.circle'))
 // Появление первого блока
 
 document.addEventListener('DOMContentLoaded', () => {

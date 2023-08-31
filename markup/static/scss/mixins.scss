@@ -196,24 +196,28 @@
 	border-radius: 32px;
 	color: $text-color;
 	background: transparent;
-	outline: 1px solid $border-color;
-	border: none;
+	border: 1px solid $border-color;
+	// border: none;
 	transition: $transition-main;
 
+	&:default {
+		border-color: $border-color;
+		color: $text-color;
+	}
 	&:hover {
-		outline-color: $hover;
+		border-color: $hover;
 		color: $hover;
 	}
 	&:focus {
-		outline-color: $focus;
+		border-color: $focus;
 		color: $focus;
 	}
-	// &:valid {
-	// 	outline-color: $valid;
-	// 	color: $valid;
-	// }
-	&:invalid {
-		outline-color: $invalid;
+	&:valid {
+		border-color: $valid;
+		color: $valid;
+	}
+	&:not(:placeholder-shown):invalid {
+		border-color: $invalid;
 		color: $invalid;
 	}
 }
