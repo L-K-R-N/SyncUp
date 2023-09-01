@@ -83,30 +83,70 @@
 // burger styles start 
 
 .burger {
-	@include flex($direction: column, );
+	@include grid($columns: 1fr, $rows: 1fr);
+
 	margin-left: 40px;
-	width: 28px;
+	width: 24px;
 	height: 24px;
 	position: relative;
-	&__line {
-		position: absolute;
-		width: 100%;
-		background: $color-text-main;
-		height: 2px;
-		border: 2px solid $color-text-main;
-		border-radius: 20px;
-		left: 0;
-		transition: transform 0.5s ease, top 0.2s ease 0.5s, opacity 0.5s ease, bottom 0.1s ease ;
-		&_first {
-			top: 0;
-		}
-		&_second {
+	// &__line {
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	background: $color-text-main;
+	// 	height: 2px;
+	// 	border: 2px solid $color-text-main;
+	// 	border-radius: 20px;
+	// 	left: 0;
+	// 	transition: transform 0.5s ease, top 0.2s ease 0.5s, opacity 0.5s ease, bottom 0.1s ease ;
+	// 	&_first {
+	// 		top: 0;
+	// 	}
+	// 	&_second {
+	// 		top: 50%;
+	// 	}
+	// 	&_third {
+	// 		top: 100%;
+	// 	}
+	// }
+	svg {
+		transition: all 0.5s;
+		&:first-child, &:last-child {
+
+			position: absolute;
 			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) ;
+
 		}
-		&_third {
-			top: 100%;
+
+		&:last-child {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(0);
+
+		}
+
+		
+	}
+	
+	&.show {
+
+		svg {
+			
+			&:last-child {
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 1;
+			}
+			&:first-child {
+				transform: translate(-50%, -50%) scale(0);
+				opacity: 0;
+			}
 		}
 	}
+
+
+	// &:last-child {
+	// 	opacity: 0;
+	// }
 }
 // burger styles end
 
@@ -162,6 +202,31 @@
 		transform: scale(1);
 	}
 }
+
+
+
+@keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  transform: translateY(100px)
+	}
+  
+	to {
+	  opacity: 1;
+	  transform: translateY(0)
+	}
+  }
+  
+  .fadeInUp {
+	visibility: hidden;
+	animation: 1s fadeInUp;
+  }
+
+  .wow {
+	visibility: hidden;
+  }
+
+
 .circles {
 	position: absolute;
 	top: -35%;
@@ -247,6 +312,7 @@
 		@include button-primary($width: 240px, $height: 45px, $bg-color: $color-bg, $text-color: $color-primary);
 		padding: 0;
 		box-shadow: 0 2px 4px 0 #0000001a;
+		border-color: transparent;
 	}
 
 	&__container {
@@ -258,6 +324,16 @@
 		background: $color-bg;
 		padding: 16px 0;
 		box-shadow: 0 2px 4px 0 #0000001a;
+
+		.header__connect-button {
+			background: $color-primary;
+			color: $color-bg;
+
+			&:hover {
+				background: $color-bg;
+				color: $color-primary;
+			}
+		}
 	}
 
 	&-logo {
@@ -302,20 +378,20 @@
 	
 	&__img-container {
 		position: absolute;
-		top: -20%;
+		top: 50%;
 		right: -35%;
 		@include flex($justify: center);
 		width: 30%;
-		height: 150%;
+		transform: translateY(-50%);
 		width: 100%;
-		transform: translateX(100vw);
-		visibility: hidden;
+		// transform: translateX(100vw);
+		// visibility: hidden;
 		transition: transform 1.4s cubic-bezier(0.34, 1.36, 0.64, 1) 2.2s;
 
-		&.show {
-			visibility: visible;
-			transform: translateX(0);
-		}
+		// &.show {
+		// 	visibility: visible;
+		// 	transform: translateX(0);
+		// }
 	}
 
 	&__img {
@@ -333,13 +409,10 @@
 		&__buttons {
 			@include flex($gap: 16px);
 			height: 64px;
-			opacity: 0;
+			opacity: 1;
 			transition: opacity 0.3s linear 1.6s;
-			visibility: hidden;
-			&.show {
-				opacity: 1;
-				visibility: visible;
-			}
+			
+			
 		}
 
 	
@@ -361,27 +434,18 @@
 
 	&__title {
 		color: $color-text-main;
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.7s linear;
+		
 
-		&.show {
-			opacity: 1;
-			visibility: visible;
-		}
+		
 	}
 	
 	&__desc {
 		@include text;	
 		width: 540px;
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.5s linear 0.9s;
+		
+		
 
-		&.show {
-			opacity: 1;
-			visibility: visible;
-		}
+		
 	}
 
 	// .intro__content.show {
@@ -1230,6 +1294,7 @@
 @include media-max-m {
 
 	.circles {
+		display: none;
 		// width: 1000px;
 		// height: 1000px;
 	}
@@ -1532,18 +1597,22 @@
 					overflow: hidden;
 					transition: transform 0.5s linear;
 					border-radius: 3px;
+					
+					
 
-					&:last-child {
-						border-bottom: none;
-					}
 					&__link {
+						
 					}
 
 					&__item {
 						padding: 5px 30px;
-						font-size: $size-l;
 						border-bottom: 1px solid $color-text-third;
 
+						&:last-child {
+							border-bottom: none;
+						}
+						font-size: $size-xs;
+						
 
 					} 
 				}

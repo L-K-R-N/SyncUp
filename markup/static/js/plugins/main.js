@@ -1,3 +1,7 @@
+
+
+
+
 // Custom select
 if (document.querySelector(".custom-select-field")) {
 	for (const dropdown of document.querySelectorAll(".custom-select-field")) {
@@ -120,9 +124,11 @@ changeHeaderBg(document.querySelector('.header'))
 
 const toggleMenu = () => {
 	const menu = document.querySelector('.header-menu')
+	const burger = document.querySelector('.header-burger');
 	document.querySelector('.header-burger').addEventListener('click', (e) => {
 		
 		menu.classList.toggle('show')
+		burger.classList.toggle('show')
 		document.body.classList.toggle('no-scroll')
 	})
 
@@ -160,16 +166,14 @@ const mouseParallax = (container, elements) => {
 	})
 }
 
-mouseParallax(document.querySelector('.intro'), document.querySelectorAll('.intro__img'))
+// mouseParallax(document.querySelector('.intro'), document.querySelectorAll('.intro__img'))
 // parallax(document.querySelector('.intro'), document.querySelectorAll('.circle'))
 // Появление первого блока
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
-	document.querySelector('.intro__title').classList.add('show')
-	document.querySelector('.intro__desc').classList.add('show')
-	document.querySelector('.intro__info__buttons').classList.add('show')
-	document.querySelector('.intro__img-container').classList.add('show')
-	console.log(1)
+	new WOW().init();
 })
 
 
