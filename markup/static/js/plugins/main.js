@@ -102,7 +102,7 @@ accordion(document.querySelector('.questions__cards'))
 
 const changeHeaderBg = (header) => {
 	document.addEventListener('scroll', () => {
-		if (window.scrollY > 34) {
+		if (window.scrollY > 0) {
 			header.classList.add('fixed')
 			
 		} else {
@@ -140,7 +140,7 @@ toggleMenu()
 
 // Паралакс
 
-const parallax = (container, elements) => {
+const mouseParallax = (container, elements) => {
 	container.addEventListener('mousemove', (e) => {
 		let clientX = e.clientX;
 		let clientY = e.clientY;
@@ -151,7 +151,7 @@ const parallax = (container, elements) => {
 		const coordY = clientY - containerTop - (container.offsetHeight / 2);
 
 		for (let elem of elements) {
-			const speed = elem.dataset.speed;
+			const speed = elem.dataset.mousespeed;
 			const x = -(coordX * speed).toFixed(2)
 			const y = -(coordY * speed).toFixed(2)
 			elem.setAttribute('style', `transform: translate(${x}px, ${y}px)`)
@@ -160,8 +160,8 @@ const parallax = (container, elements) => {
 	})
 }
 
-parallax(document.querySelector('.intro'), document.querySelectorAll('.intro__img'))
-parallax(document.querySelector('.intro'), document.querySelectorAll('.circle'))
+mouseParallax(document.querySelector('.intro'), document.querySelectorAll('.intro__img'))
+// parallax(document.querySelector('.intro'), document.querySelectorAll('.circle'))
 // Появление первого блока
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -171,3 +171,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('.intro__img-container').classList.add('show')
 	console.log(1)
 })
+
+
+
+const scrollParallax = () => {
+	document.addEventListener('scroll', () => {
+		for (let elem of document.querySelectorAll('.scrollParallax')) {
+			const speed = elem.dataset.scrollspeed || 5;
+			console.log(speed)
+			elem.setAttribute('style', `transform: translateY(${(window.scrollY / speed)}px)`)
+		}
+	})
+	
+}
+
+scrollParallax()

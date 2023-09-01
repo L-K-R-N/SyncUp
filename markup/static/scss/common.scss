@@ -164,10 +164,10 @@
 }
 .circles {
 	position: absolute;
-	top: -60%;
-	right: -35%;
-	width: 1380px;
-	height: 1380px;
+	top: -35%;
+	right: -25%;
+	width: 120vh;
+	height: 120vh;
 	z-index: -999;
 	.circle {
 		border-radius: 50%;
@@ -180,7 +180,7 @@
 			width: 100%;
 			height: 100%;
 			background: rgba(255, 239, 191, 1);
-			// animation: pulce 11s infinite ;
+			animation: pulce 9s infinite ;
 			
 		}
 		&-second {
@@ -188,7 +188,7 @@
 			width: 90%;
 			height: 90%;
 			background: rgba(252, 200, 39, 1);
-			// animation: pulce 15s linear infinite ;
+			animation: pulce 13s infinite ;
 		}
 
 		&-third {
@@ -196,7 +196,7 @@
 			height: 90%;
 
 			background: rgba(255, 156, 55, 0.7);
-			// animation: pulce 20s linear infinite ;
+			animation: pulce 11s infinite ;
 		}
 	}
 
@@ -222,7 +222,7 @@
 
 // header styled start
 .header {
-
+	@include flex;
 	width: 100%;
 	position: absolute;
 	top: 0;
@@ -230,12 +230,12 @@
 	left: 0;
 	padding: 50px 0 16px 0;
 	transition: $transition-main;
-	
+	height: 70px;
 	z-index: 999;
 	&__content {
 		width: 100%;
 		@include flex ();
-		height: 64px;
+		
 		
 	}
 
@@ -244,17 +244,28 @@
 	}
 
 	&__connect-button {
-		@include button-primary($width: 240px, $height: 64px, $bg-color: $color-bg, $text-color: $color-primary);
+		@include button-primary($width: 240px, $height: 45px, $bg-color: $color-bg, $text-color: $color-primary);
+		padding: 0;
+		box-shadow: 0 2px 4px 0 #0000001a;
+	}
 
-		box-shadow: $shadow;
+	&__container {
+		height: auto;
 	}
 
 	&.fixed {
 		position: fixed;
 		background: $color-bg;
-		z-index: 999;
 		padding: 16px 0;
 		box-shadow: 0 2px 4px 0 #0000001a;
+	}
+
+	&-logo {
+		height: 40px;
+	}
+
+	&-menu {
+		position: relative;
 	}
 }
 
@@ -462,7 +473,6 @@
 .demo {
 	width: 100%;
 	height: auto;
-	margin-bottom: 80px;
 	overflow: hidden;
 
 	&__content {
@@ -601,13 +611,13 @@
 			border-bottom: 2px solid $color-text-third;
 			cursor: pointer;
 			transition: $transition-main;
-
+			@include hover-opacity;
 			&.active-tab {
 				border-color: $color-primary;
 			}
 			&:hover {
 				border-color: $color-primary;
-				@include hover-opacity;
+				
 			}
 		}
 
@@ -696,7 +706,7 @@
 				
 				font-size: $size-xxl;
 				color: $color-text-main;
-
+				font-weight: 600;
 				&_small {
 					@include h5;
 					font-weight: 600;
@@ -1220,8 +1230,8 @@
 @include media-max-m {
 
 	.circles {
-		width: 1000px;
-		height: 1000px;
+		// width: 1000px;
+		// height: 1000px;
 	}
 
 	
@@ -1246,7 +1256,7 @@
 	.intro {
 
 		height: 100vh;
-
+		padding-bottom: 80px;
 			&__content {
 				height: auto;
 			}
@@ -1461,14 +1471,14 @@
 		}
 
 		.circles {
-			
+			display: none;
 			right: -100%;
-			width: 700px;
-			height: 700px;
+			width: 100vh;
+			height: 100vh;
 
 			.circle {
-				
-				@include flex($justify: center);
+				display: none;
+				// @include flex($justify: center);
 				animation: pulce 0.5s  0 infinite ;
 				
 
@@ -1508,28 +1518,33 @@
 		// header styled start
 		
 			.header {
-				padding: 15px 0;
+				height: 60px;
 				&-menu__list {
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100vw;
-					height: 100vh;
-					transform: translate(100%);
-
+					position: absolute;
+					top: 30px;
+					right: 0;
+					width: auto;
+					height: auto;
 					flex-direction: column;
 					background: $color-bg;
+					box-shadow: 0 2px 4px 0 #0000001a;
+					transform: translate(100vw);
+					overflow: hidden;
+					transition: transform 0.5s linear;
+					border-radius: 3px;
 
-					transition: all 0.5s ;
-					padding: 140px 0;
-
+					&:last-child {
+						border-bottom: none;
+					}
 					&__link {
-						color: $color-text-main;
 					}
 
 					&__item {
-						
+						padding: 5px 30px;
 						font-size: $size-l;
+						border-bottom: 1px solid $color-text-third;
+
+
 					} 
 				}
 				
@@ -1543,7 +1558,11 @@
 					&.show {
 
 						.header-menu__list {
+							// transition: opacity 0.5s linear, visibility 0s;
+							// transform: scale(1);
 							transform: translate(0);
+							// visibility: visible;
+							// opacity: 1;
 						}
 
 						.header-burger {
