@@ -1,5 +1,5 @@
 
-
+new WOW().init();
 
 
 // Custom select

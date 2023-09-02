@@ -42,6 +42,10 @@
 .no-scroll {
 	overflow: hidden;
 }
+
+.wow {
+	visibility: hidden;
+}
 // menu styled start
 
 .menu {
@@ -151,6 +155,7 @@
 // burger styles end
 
 
+
 // menu styled end
 
 // circle styles start
@@ -205,26 +210,22 @@
 
 
 
-@keyframes fadeInUp {
-	from {
-	  opacity: 0;
-	  transform: translateY(100px)
-	}
+// @keyframes fadeInUp {
+// 	from {
+// 	  opacity: 0;
+// 	  transform: translateY(100px)
+// 	}
   
-	to {
-	  opacity: 1;
-	  transform: translateY(0)
-	}
-  }
+// 	to {
+// 	  opacity: 1;
+// 	  transform: translateY(0)
+// 	}
+//   }
   
-  .fadeInUp {
-	visibility: hidden;
-	animation: 1s fadeInUp;
-  }
-
-  .wow {
-	visibility: hidden;
-  }
+//   .fadeInUp {
+// 	visibility: hidden;
+// 	animation: 1s fadeInUp;
+//   }
 
 
 .circles {
@@ -472,6 +473,8 @@
 	margin-bottom: 80px;
 	position: relative;
 	overflow: hidden;
+
+	
 	&__content {
 		@include flex($direction: column, $gap: 50px);
 		width: 100%;
@@ -723,6 +726,7 @@
 			padding: 64px;
 			@include flex($direction: column, $gap: 32px, $align: start);
 			position: relative;
+			background-color: $color-bg;
 			
 			&__titles {
 				@include flex($direction: column, $gap: 12px, $align: start, $justify: center);
@@ -948,7 +952,7 @@
 		z-index: -999;
 	}
 	&__content {
-		@include flex();
+		@include flex($align: stretch);
 		height: 100%;
 		width: 100%;
 		border-radius: 20px;
@@ -968,9 +972,9 @@
 
 	&__info {
 		@include flex($direction: column, $justify: center, $gap: 24px);
-		height: 100%;
 		width: 53%;
 		padding: 0 64px;
+		background: $color-bg;
 		&__text {
 			@include flex($direction: column, $align: center)
 		}
@@ -1176,7 +1180,9 @@
 		
 		.benefits {
 
-			
+			&-blur-circle {
+				left: -20%;
+			}
 		}
 		
 		// benefits styled end
@@ -1997,3 +2003,15 @@
 
 // MEDIA QUERIES END
 
+
+
+
+.wow {
+	visibility: hidden;
+	
+  }
+
+.animated {
+	visibility: hidden;
+	
+}
