@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Your awesome project description",
   "main": "gulpfile.js",
+  "homepage": "https://Eptaaaaaaaa.github.io/SyncUp",
   "directories": {},
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "gulp": "^4.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tars build -r"
   },
   "author": "",
   "license": "ISC",
