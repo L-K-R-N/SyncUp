@@ -195,6 +195,15 @@ scrollParallax();
 
 
 
+(function() {
+	let open = document.querySelector('.call-main')
+	let menu = document.querySelector('.call')
+	open.addEventListener("click", () => {
+	menu.classList.toggle('active');
+	})
+})()
+
+
 // Scroll to anchors
 // (function () {
 

@@ -45,7 +45,200 @@
 
 .wow {
 	visibility: hidden;
+
 }
+
+// call styles start
+
+.call {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+    will-change: transform;
+
+    &-content {
+        margin-bottom: 16px;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 100%;
+        visibility: hidden;
+        transition: transform 0.3s, visibility 0.3s;
+        will-change: transform;
+
+        a {
+            will-change: transform;
+            transition: transform 0.3s, visibility 0.3s;
+            transform: scale(0);
+        }
+
+        span {
+            display: block;
+            transition: transform 0.2s;
+
+            img {
+                transform: scale(1) rotate(0) !important;
+            }
+
+            &:nth-child(1) {
+                a {
+                    transition-delay: 0.25s;
+                }
+            }
+
+            &:nth-child(2) {
+                a {
+                    transition-delay: 0.2s;
+                }
+            }
+
+            &:nth-child(3) {
+                a {
+                    transition-delay: 0.15s;
+                }
+            }
+
+            &:nth-child(4) {
+                a {
+                    transition-delay: 0.1s;
+                }
+            }
+
+            &:nth-child(5) {
+                a {
+                    transition-delay: 0.05s;
+                }
+            }
+        }
+    }
+
+    &-main, &-content a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        min-height: 60px;
+        border-radius: 50%;
+        background-color: rgba(255, 156, 55);
+        position: relative;
+    }
+
+    .call-main {
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .call-open {
+        display: flex;
+
+        img {
+            position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+            opacity: 0;
+            -webkit-animation: opacity 9s infinite;
+
+            &:nth-child(2) {
+                -webkit-animation-delay: 1.5s;
+            }
+
+            &:nth-child(3) {
+                -webkit-animation-delay: 3s;
+            }
+
+            &:nth-child(4) {
+                -webkit-animation-delay: 4.5s;
+            }
+
+            &:nth-child(5) {
+                -webkit-animation-delay: 6s;
+            }
+
+            &:nth-child(6) {
+                -webkit-animation-delay: 7.5s;
+            }
+
+        }
+    }
+
+    .call-close {
+        transition: transform 0.3s;
+        position: absolute;
+        top: 52%;
+        left: 50%;
+        transform: scale(0) translate(-50%, -50%);
+        transform-origin: 0 0;
+    }
+
+    &.active {
+        .call-main {
+            transform: scale(1) !important;
+        }
+
+        .call-content {
+            visibility: visible;
+
+            a {
+                transform: scale(1);
+            }
+
+            span {
+                transition-delay: 0;
+
+                &:hover {
+                    transform: scale(1.2) rotate(10deg);
+                }
+            }
+        }
+
+        .call-open {
+            transform: scale(0);
+        }
+
+        .call-close {
+            transform: scale(1) translate(-50%, -50%);
+        }
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    8% {
+        opacity: 1;
+    }
+    16% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+// call styles end
+
+
+
 // menu styled start
 
 .menu {
@@ -70,10 +263,12 @@
 	}
 }
 
-.social-menu {
+.social-menu {	
+	width: auto;
 
 	&__list {
 
+		gap: 10px;
 		&__link {
 			@include hover-opacity;
 			@include flex;
@@ -341,10 +536,11 @@
 	}
 
 	&-logo {
-		height: 40px;
+		
 
 		&-img {
 			height: 40px;
+			width: 128px;
 		}
 	}
 
@@ -564,11 +760,18 @@
 		text-align: center;
 	}
 	
-	&__img {
+	&__img-container {
 		@include flex($align: end, $justify: center);
 		width: 50%;
 		border-radius: 32px;
 		background: lighten($color-primary, 35%);
+
+		
+	}
+
+	&__img {
+		width: 532px;
+			height: 478px;
 	}
 
 	&__info {
@@ -1060,10 +1263,17 @@
 		
 	}
 	
-	&__img {
+	&__img-container {
 		@include flex($justify: end);
 		width: 60%;
 		overflow: hidden;
+
+
+	}
+
+	&__img {
+		width: 720px;
+		height: 633px;
 	}
 
 	&__info {
@@ -1118,6 +1328,11 @@
 	
 	margin-bottom: 20px;
 	padding-top: 40px;
+
+	&-logo {
+		width: 192px;
+		height: 60px;
+	}
 	&__content {
 		width: 100%;
 		@include flex ();
@@ -1125,11 +1340,7 @@
 		padding: 16px 10px;
 	}
 
-	&__social-menu {
-		width: 150px;
 
-		
-	}
 
 	&-container {
 		@include flex($direction: column, $gap: 20px)
@@ -1283,7 +1494,7 @@
 				width: 100%;
 			}
 
-			&__img {
+			&__img-container {
 				width: 100%;
 				border-radius: 32px;
 				background: lighten($color-primary, 36%);
@@ -1341,11 +1552,13 @@
 		height: 100vh;
 		padding-bottom: 80px;
 			&__content {
-				height: auto;
+				height: calc(100vh - 160px);
 			}
 			&__content-container {
+				height: 100%;
 				width: 100%;
 				align-items: center;
+				justify-content: space-evenly;
 				// gap: 20px;
 			}
 
@@ -1400,7 +1613,7 @@
 				flex-direction: column;
 			}
 
-			&__img {
+			&__img-container {
 				width: 100%;
 			}
 
@@ -1537,6 +1750,10 @@
 		.small-text {
 			font-size: $size-xxs;
 		}
+
+		.menu {
+			width: auto;
+		}
 		// circle styles start
 
 		@keyframes pulce {
@@ -1602,19 +1819,21 @@
 		
 			.header {
 				height: 60px;
+
+
 				&-menu__list {
 					position: fixed;
-					top: 50px;
+					top: 70px;
 					right: 15px;
 					width: auto;
 					height: auto;
 					flex-direction: column;
 					background: $color-bg;
-					box-shadow: 0 2px 4px 0 #0000001a;
+					box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1019607843);
 					transform: translate(100vw);
 					overflow: hidden;
 					transition: transform 0.5s;
-					border-radius: 3px;
+					border-radius: 5px;
 					
 					
 
@@ -1801,6 +2020,11 @@
 
 			}
 
+			&__img {
+				width: 350px;
+				height: 340px;
+			}
+
 			&__title {
 				width: auto;
 			}
@@ -1983,6 +2207,9 @@
 		
 		.about {
 
+			&__img-container {
+				display: none;
+			}
 			// margin-bottom: 40px;
 			
 		}
