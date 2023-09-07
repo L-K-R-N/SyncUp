@@ -126,12 +126,16 @@ changeHeaderBg(document.querySelector('.header'))
 
 const toggleMenu = () => {
 	const menu = document.querySelector('.header-menu')
+	const list = document.querySelector('.header-menu__list')
 	const burger = document.querySelector('.header-burger');
 	document.querySelector('.header-burger').addEventListener('click', (e) => {
 		
 		menu.classList.toggle('show')
 		burger.classList.toggle('show')
 		document.body.classList.toggle('no-scroll')
+		
+		
+		
 	})
 
 	document.querySelector('.header-menu__list').addEventListener('click', (e) => {

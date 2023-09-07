@@ -72,14 +72,17 @@
             will-change: transform;
             transition: transform 0.3s, visibility 0.3s;
             transform: scale(0);
+			box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
         }
 
         span {
             display: block;
             transition: transform 0.2s;
-
-            img {
+			
+            svg {
                 transform: scale(1) rotate(0) !important;
+				
+
             }
 
             &:nth-child(1) {
@@ -124,10 +127,30 @@
         border-radius: 50%;
         background-color: rgba(255, 156, 55);
         position: relative;
+
+		@include media-max-s {
+			min-width: 45px;
+			min-height: 45px;
+
+			max-width: 45px;
+			max-height: 45px;
+
+
+			svg {
+				
+				width: 20px;
+				height: 20px;
+
+				
+
+
+			}
+		}
     }
 
     .call-main {
         transition: transform 0.2s;
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
 
         &:hover {
             transform: scale(1.2);
@@ -137,7 +160,7 @@
     .call-open {
         display: flex;
 
-        img {
+        svg {
             position: absolute;
           top: 50%;
           left: 50%;
@@ -206,6 +229,8 @@
             transform: scale(1) translate(-50%, -50%);
         }
     }
+
+	
 }
 
 @keyframes shake {
@@ -494,13 +519,24 @@
 	padding: 50px 0 16px 0;
 	transition: $transition-main;
 	height: 70px;
-	z-index: 999;
+	z-index: 1000;
+
+	// .overlay {
+	// 	display: none;
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100vw;
+	// 	height: 100vh;
+	// 	background: rgba(0, 0, 0, 0.2019607843);
+	// }
 	&__content {
 		width: 100%;
 		@include flex ();
 		
 		
 	}
+
 
 	&-burger {
 		display: none;
@@ -520,12 +556,18 @@
 
 	
 
+	.social-menu__list {
+		display: none;
+	}
 	&-logo {
 		
 
 		&-img {
 			transition: $transition-main;
+			
+			width: auto;
 			object-fit: contain;
+			object-position: 0 0;
 			height: 60px;
 			width: 192px;
 		}
@@ -533,6 +575,8 @@
 
 	&-menu {
 		position: relative;
+
+		
 	}
 
 	&.fixed {
@@ -1845,39 +1889,70 @@
 				height: 60px;
 
 
-				&-menu__list {
-					position: fixed;
-					top: 70px;
-					right: 15px;
-					width: auto;
-					height: auto;
-					flex-direction: column;
-					background: $color-bg;
-					box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1019607843);
-					transform: translate(100vw);
-					overflow: hidden;
-					transition: transform 0.5s;
-					border-radius: 5px;
-					
-					
+				// .overlay {
+				// 	display: block;
 
-					&__link {
+				// }
+
+				&-menu {
+
+
+					&__list {
+						position: fixed;
+						top: 90px;
+						right: 0;
+						width: 100%;
+						height: 100%;
+						flex-direction: column;
+						background: $color-bg;
+						// transform: translate(100vw);
+						overflow: hidden;
+						transition: background 0.3s, height 0.5s;
+						z-index: 999;
+						justify-content: start;
+						background: transparent;
+						height: 0;
+						overflow: hidden;
 						
-					}
-
-					&__item {
-						padding: 5px 30px;
-						border-bottom: 1px solid $color-text-third;
-
-						&:last-child {
-							border-bottom: none;
+						&__link {
+						
 						}
-						font-size: $size-xs;
-						
+	
+						&__item {
+							@include flex($justify: center);
+							padding: 20px 0;
+							border-bottom: 1px solid $color-text-third;
+							width: 100%;
+							height: auto;
+							background: $color-bg;
+	
+							&:first-child {
+								border-top: 1px solid $color-text-third;
+							}
+	
+							&:last-child {
+								border-bottom: none;
+							}
+							font-size: $size-s;
+							
+	
+						} 
+				}
+					
+					
+					
+					
+				}
 
-					} 
+				.social-menu__list {
+					display: flex;
+					gap: 30px;
 				}
 				
+				&-logo-img {
+					height: 40px;
+
+				}
 				&-burger {
 					display: flex;
 				}
@@ -1887,12 +1962,15 @@
 					
 					&.show {
 
-						.header-menu__list {
-							// transition: opacity 0.5s linear, visibility 0s;
-							// transform: scale(1);
-							transform: translate(0);
-							// visibility: visible;
-							// opacity: 1;
+						.header-menu {
+
+							
+
+							&__list {
+								height: 100%;
+								background: rgba(0, 0, 0, 0.5);
+							}
+							
 						}
 
 						.header-burger {
@@ -1918,6 +1996,13 @@
 						}
 
 						
+					}
+				}
+
+				&.fixed {
+
+					.header-menu__list {
+						top: 58px;
 					}
 				}
 		
@@ -2142,8 +2227,8 @@
 
 					&-ico {
 						top: 0;
-						width: 55px;
-						height: 55px;
+						width: 50px;
+						height: 50px;
 					}
 
 					&__titles {
@@ -2265,6 +2350,9 @@
 				display: none;
 			}
 			
+			.logo-img {
+				height: 50px;
+			}
 		}
 		// footer styles end
 		}
