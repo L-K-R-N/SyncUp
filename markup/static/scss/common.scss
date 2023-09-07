@@ -259,6 +259,7 @@
 	
 		&-item {
 			@include text;
+			font-size: $size-xs;
 		}
 	}
 }
@@ -507,7 +508,7 @@
 
 	&__connect-button {
 		@include flex($justify: center);
-		@include button-primary($width: 240px, $height: 45px, $bg-color: $color-bg, $text-color: $color-primary);
+		@include button-primary($width: 240px, $bg-color: $color-bg, $text-color: $color-primary);
 		padding: 0;
 		box-shadow: 0 2px 4px 0 #0000001a;
 		border-color: transparent;
@@ -515,6 +516,23 @@
 
 	&__container {
 		height: auto;
+	}
+
+	
+
+	&-logo {
+		
+
+		&-img {
+			transition: $transition-main;
+			object-fit: contain;
+			height: 60px;
+			width: 192px;
+		}
+	}
+
+	&-menu {
+		position: relative;
 	}
 
 	&.fixed {
@@ -527,25 +545,23 @@
 			
 			background: $color-primary;
 			color: $color-bg;
+			height: 45px;
 
 			&:hover {
 				background: $color-bg;
 				color: $color-primary;
 			}
 		}
-	}
 
-	&-logo {
+		.header-logo {
 		
 
-		&-img {
-			height: 40px;
-			width: 128px;
+			&-img {
+				
+				height: 40px;
+				// width: 128px;
+			}
 		}
-	}
-
-	&-menu {
-		position: relative;
 	}
 }
 
@@ -1095,6 +1111,13 @@
 			padding: 36px 48px 36px 48px;
 			cursor: pointer;
 
+			&:hover {
+
+				.questions__card-ico {
+					opacity: 0.7;
+				}
+			}
+
 			&.active-accordion {
 				
 				.questions__card-ico {
@@ -1106,8 +1129,8 @@
 		&-ico {
 			
 			min-width: 30px;
-			@include hover-opacity;
-			transition: all 0.5s ;
+			
+			transition: $transition-main;
 			
 		}
 		&-title {
@@ -1495,9 +1518,10 @@
 			}
 
 			&__img-container {
-				width: 100%;
-				border-radius: 32px;
-				background: lighten($color-primary, 36%);
+				display: none;
+				// width: 100%;
+				// border-radius: 32px;
+				// background: lighten($color-primary, 36%);
 				
 			}
 		}
@@ -1923,10 +1947,12 @@
 			&__title {
 				width: 100%;
 				text-align: left;
+				line-height: 120%
 			}
 
 			&__desc {
 				text-align: left;
+				line-height: 140%
 			}
 
 			&__info {
@@ -2078,6 +2104,11 @@
 					&:hover {
 						opacity: 1;
 					}
+				}
+
+				&__title-ico {
+					width: 25px;
+					height: 25px;
 				}
 
 				&__main {

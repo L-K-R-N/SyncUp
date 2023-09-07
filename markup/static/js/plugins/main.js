@@ -140,6 +140,7 @@ const toggleMenu = () => {
 		if (!target) return;
 
 		menu.classList.remove('show');
+		burger.classList.remove('show')
 		document.body.classList.remove('no-scroll')
 	})
 }
