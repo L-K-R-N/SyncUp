@@ -7279,8 +7279,9 @@ a {
     height: auto;
   }
   .intro__button {
-    height: 64px;
+    height: 55px;
     width: 100%;
+    padding: 0;
   }
   .intro__desc {
     width: auto;
@@ -7342,6 +7343,7 @@ a {
     width: auto;
   }
   .demo__button {
+    height: 55px;
     width: 100%;
   }
   .prices__content {
@@ -7417,6 +7419,9 @@ a {
   .prices-tabs__plan__titles {
     padding-left: 65px;
   }
+  .prices-tabs__plan__button {
+    height: 55px;
+  }
   .prices-tabs__benefits {
     height: 50%;
     width: 100%;
@@ -7430,6 +7435,10 @@ a {
   .questions__card-answer {
     padding: 0 22px;
     font-size: 18px;
+  }
+  .questions__card-ico {
+    width: 24px;
+    height: 24px;
   }
   .consultation__container-form {
     padding: 0;
@@ -7447,6 +7456,9 @@ a {
     padding: 14px 22px;
     height: 100px;
     font-size: 18px;
+  }
+  .consultation__form-button {
+    height: 55px;
   }
   .consultation__info {
     padding: 40px 30px;
