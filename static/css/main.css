@@ -5063,8 +5063,8 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-direction: column;
   position: absolute;
   bottom: 100%;
   visibility: hidden;
@@ -5170,23 +5170,43 @@ a {
           transform: translate(-50%, -50%);
   opacity: 0;
   -webkit-animation: opacity 9s infinite;
+          animation: opacity 9s infinite;
 }
 .call .call-open svg:nth-child(2) {
   -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
 }
 .call .call-open svg:nth-child(3) {
   -webkit-animation-delay: 3s;
+          animation-delay: 3s;
 }
 .call .call-open svg:nth-child(4) {
   -webkit-animation-delay: 4.5s;
+          animation-delay: 4.5s;
 }
 .call .call-open svg:nth-child(5) {
   -webkit-animation-delay: 6s;
+          animation-delay: 6s;
 }
 .call .call-open svg:nth-child(6) {
   -webkit-animation-delay: 7.5s;
+          animation-delay: 7.5s;
 }
 .call .call-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 0;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -6355,6 +6375,9 @@ a {
   right: 8%;
   color: rgb(255, 255, 255);
 }
+.prices-tabs__plan__discount span {
+  font-weight: 700;
+}
 .prices-tabs__plan__desc {
   padding: 16px 0;
   width: 330px;
@@ -6970,8 +6993,8 @@ a {
   .about__content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     gap: 40px;
   }
   .about__info {
@@ -7025,8 +7048,8 @@ a {
     gap: 40px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
   }
   .demo__img-container {
     width: 100%;
@@ -7052,8 +7075,8 @@ a {
   .consultation__content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
   }
   .consultation__info {
     padding: 50px 30px;
@@ -7149,8 +7172,8 @@ a {
     height: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     background: rgb(255, 255, 255);
     overflow: hidden;
     -webkit-transition: background 0.3s, height 0.5s;
@@ -7250,8 +7273,8 @@ a {
   .intro__info__buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     width: 100%;
     height: auto;
   }
@@ -7267,6 +7290,7 @@ a {
   }
   .benefits__cards {
     grid-template-columns: repeat(1, 1fr);
+    -ms-grid-columns: repeat(1, 1fr);
     gap: 40px;
   }
   .benefits__card-ico {
@@ -7303,8 +7327,8 @@ a {
   .demo__info__buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     width: 100%;
   }
   .demo__img {
@@ -7332,8 +7356,8 @@ a {
   .prices-tabs__header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
@@ -7354,8 +7378,8 @@ a {
   .prices-tabs__main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     -webkit-transform: translateY(0);
             transform: translateY(0);
     -webkit-transform: translateX(30%);
@@ -7436,8 +7460,8 @@ a {
   .footer__content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-direction: column;
     gap: 20px;
   }
   .footer-menu {
