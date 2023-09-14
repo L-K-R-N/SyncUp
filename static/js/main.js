@@ -4813,3 +4813,27 @@ scrollParallax();
 //     };
 //     scrollTo();
 // }());
+
+const submitForm = () => {
+	
+	const form = document.forms.consultation;
+	const submit = document.querySelector('.consultation__submit');
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault()
+		submit.classList.add('active');
+		setTimeout(() => {
+			submit.classList.remove('active');
+
+			for (let elem of form.children) {
+				if (elem.getAttribute('placeholder')) {
+					elem.value = ''
+				}
+			}
+		}, 1000)
+
+		
+	})
+}
+
+submitForm()
