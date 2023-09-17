@@ -184,6 +184,7 @@
 				$width: 100%, 
 				$height: 100%, 
 				$text-color: $color-text-second, 
+				$placeholder: $color-text-third,
 				$border-color: $color-primary,
 				$hover: $color-text-second,
 				$focus: $color-text-main,
@@ -200,26 +201,23 @@
 	// border: none;
 	transition: $transition-main;
 
+	&::placeholder {
+		color: $placeholder;
+	}
+
 	&:default {
 		border-color: $border-color;
-		color: $text-color;
+		
 	}
+
 	&:hover {
 		border-color: $hover;
-		color: $hover;
 	}
 	&:focus {
 		border-color: $focus;
 		color: $focus;
 	}
-	&:valid {
-		border-color: $valid;
-		color: $valid;
-	}
-	&:not(:placeholder-shown):invalid {
-		border-color: $invalid;
-		color: $invalid;
-	}
+	
 }
 
 
@@ -227,8 +225,11 @@
 // displays
 @mixin grid ($columns, $rows, $gap: 0) {
 	display: grid;
+	display: -ms-grid;
 	grid-template-columns: $columns;
-	grid-template-rows: $rows;
+	-ms-grid-columns: $columns;
+	-ms-grid-rows: $rows;
+	grid-rows: $rows;
 	gap: $gap;
 }
 
@@ -236,6 +237,7 @@
 	display: flex;
 	align-items: $align;
 	justify-content: $justify;
+	-ms-flex-direction: $direction;
 	flex-direction: $direction;
 	gap: $gap;
 }

@@ -5,6 +5,18 @@
 
 // основные стили
 
+
+input:-webkit-autofill {
+	
+	&:hover, &:focus, &:active {
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #ffffff;
+		transition: background-color 5000s ease-in-out 0s;
+		box-shadow: inset 0 0 20px 20px rgba(35, 35, 35, 0);
+	}
+}
+
+
 .title {
 	@include h2;
 	color: $color-text-main;
@@ -54,7 +66,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 20;
+    z-index: 500;
     will-change: transform;
 
     &-content {
@@ -62,6 +74,7 @@
         gap: 16px;
         display: flex;
         flex-direction: column;
+		-ms-flex-direction: column;
         position: absolute;
         bottom: 100%;
         visibility: hidden;
@@ -166,32 +179,33 @@
           left: 50%;
           transform: translate(-50%, -50%);
             opacity: 0;
-            -webkit-animation: opacity 9s infinite;
+            animation: opacity 9s infinite;
 
             &:nth-child(2) {
-                -webkit-animation-delay: 1.5s;
+                animation-delay: 1.5s;
             }
 
             &:nth-child(3) {
-                -webkit-animation-delay: 3s;
+                animation-delay: 3s;
             }
 
             &:nth-child(4) {
-                -webkit-animation-delay: 4.5s;
+                animation-delay: 4.5s;
             }
 
             &:nth-child(5) {
-                -webkit-animation-delay: 6s;
+                animation-delay: 6s;
             }
 
             &:nth-child(6) {
-                -webkit-animation-delay: 7.5s;
+                animation-delay: 7.5s;
             }
 
         }
     }
 
     .call-close {
+		@include flex($justify: center);
         transition: transform 0.3s;
         position: absolute;
         top: 52%;
@@ -965,6 +979,15 @@
 		&__title {
 			@include h5;
 			text-align: center;
+
+			&-ico {
+				@include flex($justify: center);
+				background: rgba($color-primary, .3);
+				border-radius: 14px;
+				width: 40px;
+				height: 40px;
+				padding: 9px;
+			}
 			
 		}
 
@@ -1021,10 +1044,16 @@
 			}
 
 			&-ico {
-				
+				@include flex($justify: center);
 				position: absolute;
 				top: -15%;
 				left: 0;
+				width: 72px;
+				height: 72px;
+				border-radius: 16px;
+				background: rgba($color-primary, .3);
+				padding: 16px;
+
 			}
 
 			&__discount {
@@ -1037,6 +1066,10 @@
 				top: 10%;
 				right: 8%;
 				color: $color-bg;
+
+				& span {
+					font-weight: 700;
+				}
 			}
 			&__desc {
 				
@@ -1154,7 +1187,7 @@
 			@include flex($align: start, $gap: 20px);
 			padding: 36px 48px 36px 48px;
 			cursor: pointer;
-
+			
 			&:hover {
 
 				.questions__card-ico {
@@ -1165,7 +1198,7 @@
 			&.active-accordion {
 				
 				.questions__card-ico {
-					transform: rotate(225deg);
+					transform: rotate(135deg);
 				}
 			}
 		}
@@ -1269,20 +1302,24 @@
 	}
 
 	&__container-form {
+		@include grid($columns: 1fr, $rows: 1fr);
 		height: 100%;
 		width: 50%;
 		padding: 64px;
 		background-color: $color-bg-second;
+		overflow: hidden;
 	}
 
 	&__form {
 		@include flex($direction: column, $align: start, $gap: 28px);
+		grid-area: 1 / 1 / 2 / 2;
 		padding: 48px 40px;
 		border-radius: 25px;
 		box-shadow: $shadow;
 		background: $color-bg;
 		width: 100%;
 		height: 100%;
+		z-index: 100;
 
 		&-title {
 
@@ -1293,6 +1330,35 @@
 			@include input;
 			width: 100%;
 			height: 68px;
+
+			&.valid {
+				border-color: $color-green;
+			}
+
+			&.error {
+				border-color: $color-red;
+			}
+
+			// &:hover {
+			// 	border-color: $color-text-second;
+			// }
+
+			
+			&-container {
+				width: 100%;
+				& label {
+					padding: 0 22px;
+					display: block;
+					font-size: $size-s;
+					color: $color-red;
+					transition: $transition-main;
+
+					&.active {
+						padding: 6px 22px;
+					}
+					
+				}
+			}
 		}
 		&-textarea {
 			@include input;
@@ -1307,6 +1373,39 @@
 			width: 100%;
 			height: 68px;
 			
+		}
+	}
+
+	&__submit {
+		@include flex($direction: column, $justify: center, $gap: 15px );
+		grid-area: 1 / 1 / 2 / 2;
+		transform: translateX(100%);
+		z-index: 200;
+		border-radius: 25px;
+		background: $color-bg;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: transform 0.7s, opacity 1.5s;
+		
+
+		&-title {
+			text-align: center;
+			font-weight: 700;
+			color: $color-text-main;
+		}
+
+		&-desc {
+			@include text;
+			text-align: center;
+			max-width: 300px;
+		}
+
+		
+		&.active {
+			transition: transform 0.7s, opacity 0.4s;
+			opacity: 1;
+			transform: translate(0, 0);
 		}
 	}
 
@@ -1397,8 +1496,12 @@
 	padding-top: 40px;
 
 	&-logo {
-		width: 192px;
-		height: 60px;
+		
+		&-img {
+			object-fit: contain;
+			width: 192px;
+			height: 60px;
+		}
 	}
 	&__content {
 		width: 100%;
@@ -1419,6 +1522,14 @@
 
 		&__list__item {
 			font-size: $size-xs;
+		}
+	}
+
+	&-logo {
+
+		&-img {
+			width: 192px;
+			height: 60px;
 		}
 	}
 }
@@ -1554,6 +1665,7 @@
 
 			&__content {
 				flex-direction: column;
+				-ms-flex-direction: column;
 				gap: 40px;
 			}
 
@@ -1679,6 +1791,7 @@
 			&__content {
 				gap: 40px;
 				flex-direction: column;
+				-ms-flex-direction: column;
 			}
 
 			&__img-container {
@@ -1757,6 +1870,8 @@
 			&__content {
 
 				flex-direction: column;
+				-ms-flex-direction: column;
+				
 			}
 			
 			&__info {
@@ -1822,6 +1937,8 @@
 		.menu {
 			width: auto;
 		}
+
+		
 		// circle styles start
 
 		@keyframes pulce {
@@ -1904,6 +2021,7 @@
 						width: 100%;
 						height: 100%;
 						flex-direction: column;
+						-ms-flex-direction: column;
 						background: $color-bg;
 						// transform: translate(100vw);
 						overflow: hidden;
@@ -2045,6 +2163,7 @@
 
 				&__buttons {
 					flex-direction: column;
+					-ms-flex-direction: column;
 					width: 100%;
 					height: auto;
 
@@ -2057,8 +2176,9 @@
 			}
 
 			&__button {
-				height: 64px;
+				height: 55px;
 				width: 100%;
+				padding: 0;
 			}
 			
 
@@ -2082,7 +2202,12 @@
 			}
 
 			&__cards {
+				
+				
+				
+				-ms-grid-columns: repeat(1, 1fr);
 				grid-template-columns: repeat(1, 1fr);
+
 				gap: 40px;
 			}
 
@@ -2126,6 +2251,7 @@
 				width: 100%;
 				&__buttons {
 					flex-direction: column;
+					-ms-flex-direction: column;
 					width: 100%;
 				}
 
@@ -2146,7 +2272,7 @@
 			
 
 			&__button {
-				
+				height: 55px;
 				width: 100%;
 			}
 			
@@ -2180,6 +2306,7 @@
 
 				&__header {
 					flex-direction: column;
+					-ms-flex-direction: column;
 					align-items: start;
 				}
 
@@ -2192,12 +2319,16 @@
 				}
 
 				&__title-ico {
-					width: 25px;
-					height: 25px;
+					width: 28px;
+					height: 28px;
+
+					border-radius: 8px;
+					padding: 6px;
 				}
 
 				&__main {
 					flex-direction: column;
+					-ms-flex-direction: column;
 
 					transform: translateY(0);
 					transform: translateX(30%);
@@ -2229,10 +2360,15 @@
 						top: 0;
 						width: 50px;
 						height: 50px;
+						padding: 10px;
 					}
 
 					&__titles {
 						padding-left: 65px;
+					}
+
+					&__button {
+						height: 55px;
 					}
 
 					
@@ -2268,6 +2404,11 @@
 					padding: 0 22px;
 					font-size: $size-xs;
 				}
+
+				&-ico {
+					width: 24px;
+					height: 24px;
+				}
 			}
 
 
@@ -2298,6 +2439,13 @@
 					padding: 14px 22px;
 					height: auto;
 					font-size: $size-xs;
+
+					&-container {
+
+						& label {
+							font-size: $size-xs;
+						}
+					}
 				}
 
 				&-textarea {
@@ -2305,6 +2453,15 @@
 					height: 100px;
 					font-size: $size-xs;
 				}
+
+				&-button {
+					height: 55px;
+				}
+			}
+
+			&__submit {
+
+				transform: translateX(0) translateY(100%);
 			}
 
 			&__info {
@@ -2343,6 +2500,7 @@
 			padding: 0;
 			&__content {
 				flex-direction: column;
+				-ms-flex-direction: column;
 				gap: 20px;
 			}
 
@@ -2350,8 +2508,13 @@
 				display: none;
 			}
 			
-			.logo-img {
-				height: 50px;
+			&-logo {
+
+				&-img {
+					height: 50px;
+					
+				}
+				
 			}
 		}
 		// footer styles end
