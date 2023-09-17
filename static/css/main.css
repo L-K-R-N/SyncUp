@@ -4979,6 +4979,15 @@ a {
   display: none !important;
 }
 
+input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: inset 0 0 20px 20px rgba(35, 35, 35, 0);
+          box-shadow: inset 0 0 20px 20px rgba(35, 35, 35, 0);
+}
+
 .title {
   font-weight: 700;
   font-size: 40px;
@@ -6835,17 +6844,25 @@ a {
   border-color: rgb(46, 46, 58);
   color: rgb(46, 46, 58);
 }
-.consultation__form-input:valid {
+.consultation__form-input.valid {
   border-color: rgb(76, 191, 87);
 }
-.consultation__form-input:not(:-moz-placeholder-shown):invalid {
+.consultation__form-input.error {
   border-color: rgb(232, 73, 73);
 }
-.consultation__form-input:not(:-ms-input-placeholder):invalid {
-  border-color: rgb(232, 73, 73);
+.consultation__form-input-container {
+  width: 100%;
 }
-.consultation__form-input:not(:placeholder-shown):invalid {
-  border-color: rgb(232, 73, 73);
+.consultation__form-input-container label {
+  padding: 0 22px;
+  display: block;
+  font-size: 20px;
+  color: rgb(232, 73, 73);
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+.consultation__form-input-container label.active {
+  padding: 6px 22px;
 }
 .consultation__form-textarea {
   width: 100%;
@@ -6885,18 +6902,6 @@ a {
 .consultation__form-textarea:focus {
   border-color: rgb(46, 46, 58);
   color: rgb(46, 46, 58);
-}
-.consultation__form-textarea:valid {
-  border-color: rgb(76, 191, 87);
-}
-.consultation__form-textarea:not(:-moz-placeholder-shown):invalid {
-  border-color: rgb(232, 73, 73);
-}
-.consultation__form-textarea:not(:-ms-input-placeholder):invalid {
-  border-color: rgb(232, 73, 73);
-}
-.consultation__form-textarea:not(:placeholder-shown):invalid {
-  border-color: rgb(232, 73, 73);
 }
 .consultation__form-button {
   width: auto;
@@ -7589,6 +7594,9 @@ a {
   .consultation__form-input {
     padding: 14px 22px;
     height: auto;
+    font-size: 18px;
+  }
+  .consultation__form-input-container label {
     font-size: 18px;
   }
   .consultation__form-textarea {

@@ -4814,26 +4814,146 @@ scrollParallax();
 //     scrollTo();
 // }());
 
-const submitForm = () => {
-	
-	const form = document.forms.consultation;
-	const submit = document.querySelector('.consultation__submit');
 
-	form.addEventListener('submit', (e) => {
-		e.preventDefault()
+
+
+
+// 	form.addEventListener('submit', (e) => {
+		
+
+		
+// 	})
+
+
+
+const inputValidate = (input) => {
+	
+	
+		if (input.value.trim() === "") {
+			onError(input, 'Не указано имя')
+			
+		} else {
+			onValid(input);
+			return true;
+		}
+	
+	
+	
+}
+
+const emailValidate = (email) => {
+	if (email.value.trim() === '') {
+		onError(email, 'Не указана почта')
+		
+	} else if (!isValidEmail(email.value.trim())) {
+		console.log(1)
+		onError(email, 'Неверно указана почта')
+		
+	} else {
+		onValid(email)
+		return true;
+	}
+}
+
+document.querySelector('.consultation__form-button')
+.addEventListener('click', (e) => {
+	e.preventDefault();
+	if (!inputValidate(document.querySelector('#consultation__input-name')) || !emailValidate(document.querySelector('#consultation__input-email'))) {
+		return;
+	} else {
+		
+		const form = document.forms.consultation;
+		const submit = document.querySelector('.consultation__submit');
 		submit.classList.add('active');
 		setTimeout(() => {
 			submit.classList.remove('active');
 
-			for (let elem of form.children) {
-				if (elem.getAttribute('placeholder')) {
-					elem.value = ''
-				}
+			for (let elem of document.querySelectorAll('.consultation__form-element')) {
+				elem.value = ''
+				elem.classList.remove('valid')
 			}
-		}, 1000)
+		}, 1500)
 
-		
-	})
+	}
+	
+
+	
+})
+
+
+const onError = (input, text) => {
+	const id = input.id;
+	const message = document.querySelector(`[for="${id}"]`);
+	input.classList.remove('valid');
+	input.classList.add('error');
+	message.innerText = text;
+	message.classList.add('active')
 }
 
-submitForm()
+const onValid =(input) => {
+	const id = input.id;
+	const message = document.querySelector(`[for="${id}"]`);
+	input.classList.add('valid');
+	input.classList.remove('error');
+	message.innerText = '';
+	message.classList.remove('active')
+
+}
+
+const isValidEmail = (email) => {
+	return /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(email)
+}
+
+
+const submitForm = () => {
+	
+	
+}
+
+
+
+
+// const formValidate = () => {
+
+// 	const form = document.forms.consultation;
+
+// 	form.addEventListener('submit', (e) => {
+// 		console.log(1)
+// 		for (let elem of document.querySelectorAll('.consultation__form-element')) {
+// 			const value = elem.value;
+// 			const id = elem.id;
+// 			const label = document.querySelector(`[for="${id}"]`);
+
+			
+// 			if (!value) {
+// 				label.classList.add('.show')
+// 			} else {
+// 				label.classList.remove('.show')
+// 			}
+// 		}
+
+		
+		
+
+// 		// if (!e.target.value) {
+					
+// 		// 	console.log(label)
+// 		// 	label.classList.add('show')
+// 		// } else {
+// 		// 	label.classList.remove('show')
+// 		// }
+// 		// switch(id) {
+
+// 		// 	case 'consultation__input-name': 
+
+				
+// 		// 		break;
+
+// 		// 	case 'consultation__input-email': 
+
+// 		// 		break;
+// 		// }
+// 	})
+// }
+
+// formValidate()
