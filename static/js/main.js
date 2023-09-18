@@ -4855,26 +4855,58 @@ const emailValidate = (email) => {
 	}
 }
 
+// document.querySelector('.consultation__form-button')
+// .addEventListener('click', (e) => {
+// 	e.preventDefault();
+// 	if (!inputValidate(document.querySelector('#consultation__input-name')) || !emailValidate(document.querySelector('#consultation__input-email'))) {
+// 		return;
+// 	} else {
+		
+// 		const form = document.forms.consultation;
+// 		const submit = document.querySelector('.consultation__submit');
+// 		submit.classList.add('active');
+// 		setTimeout(() => {
+// 			submit.classList.remove('active');
+
+// 			for (let elem of document.querySelectorAll('.consultation__form-element')) {
+// 				elem.value = ''
+// 				elem.classList.remove('valid')
+// 			}
+// 		}, 1500)
+
+// 	}
+	
+const validate = () => {
+	if (!inputValidate(document.querySelector('#consultation__input-name')) || !emailValidate(document.querySelector('#consultation__input-email'))) {
+		
+		inputValidate(document.querySelector('#consultation__input-name'))
+		emailValidate(document.querySelector('#consultation__input-email'))
+		return false;
+	}
+	
+	return true;
+}
+	
+// })
 document.querySelector('.consultation__form-button')
 .addEventListener('click', (e) => {
 	e.preventDefault();
-	if (!inputValidate(document.querySelector('#consultation__input-name')) || !emailValidate(document.querySelector('#consultation__input-email'))) {
-		return;
-	} else {
+	
+	if (!validate()) return;
+	 
 		
-		const form = document.forms.consultation;
-		const submit = document.querySelector('.consultation__submit');
-		submit.classList.add('active');
-		setTimeout(() => {
-			submit.classList.remove('active');
+	const submit = document.querySelector('.consultation__submit');
+	submit.classList.add('active');
+	setTimeout(() => {
+		submit.classList.remove('active');
 
-			for (let elem of document.querySelectorAll('.consultation__form-element')) {
-				elem.value = ''
-				elem.classList.remove('valid')
-			}
-		}, 1500)
+		for (let elem of document.querySelectorAll('.consultation__form-element')) {
+			elem.value = ''
+			elem.classList.remove('valid')
+		}
+	}, 2000)
 
-	}
+	
 	
 
 	
